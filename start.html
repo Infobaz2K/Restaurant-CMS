@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/start.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="headerContainer"></div>
+
+    <div class="main">
+        <div class="main-inner">
+            <img src="img/bg-img.png" alt="">
+
+            <div class="text-overlay">
+                <h1>TAVA E-VIRTUVE</h1>
+                <p>PIEVIENO SAVU BIZNESU MŪSU LAPAI, UN ĒRTI SAVIETO SAVU IZCILO PRODUKTU KLĀSTU.</p>
+                <button onclick="loginpage()">Izveidot kontu</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="footerContainer"></div>
+    
+</body>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+    fetch('addons/header.html')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('headerContainer').innerHTML = html;
+        });
+
+    fetch('addons/footer.html')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('footerContainer').innerHTML = html;
+        });
+    });
+
+    function loginpage() {
+        window.location.href = 'http://localhost/cms/login.php';
+    }
+    
+</script>
+
+</html>

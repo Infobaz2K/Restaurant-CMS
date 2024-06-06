@@ -26,6 +26,25 @@ document.getElementById('post_image').addEventListener('change', function() {
 
 //
 
+//save button onlick
+
+document.getElementById('saveButton').addEventListener('click', function() {
+    var form = document.querySelector('.post-info form');
+    
+    form.querySelector('input[name="action"]').value = 'updateInfo';
+    form.submit();
+});
+
+//
+
+// auto submit update image
+
+document.getElementById('post_image').addEventListener('change', function() {
+    console.log("Form submitted!");
+    document.getElementById('autoPostImage').submit();
+});
+
+//
 
 
 

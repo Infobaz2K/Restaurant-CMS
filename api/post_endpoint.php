@@ -64,6 +64,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $result = $db->postInfo($data);
         }
 
+        if ($action === 'updateInfo') {
+            $data = [
+                'businessname'      => $postData['businessname'],
+                'regnum'            => $postData['regnum'],
+                'address'           => $postData['address'],
+                'bank'              => $postData['bank'],
+                'swift'             => $postData['swift'],
+                'bankaccnum'        => $postData['bankaccnum'],
+                'user_id'           => $postData['user_id'],
+            ];
+        
+            $result = $db->updateInfo($data);
+        }
+
+        if ($action === 'updateInfoImage') {
+            $data = [
+                'user_id'           => $postData['user_id'],
+                'post_image'         => $postData['post_image'],
+            ];
+        
+            $result = $db->UpdateInfoImage($data);
+        }
+
         if ($action === 'createMenu') {
             $data = [
                 'menu_name'      => $postData['menu_name'],

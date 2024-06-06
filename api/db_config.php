@@ -84,51 +84,67 @@ class dbconnect
 
 
 
-    private function getPostUser($user_id)
-    {
-        $sql = "SELECT * FROM posts WHERE user_id = ?";
-        $stmt = $this->mysqli->prepare($sql);
-        $stmt->bind_param("i", $user_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $existingData = $result->fetch_assoc();
-        $stmt->close();
+    // private function getPostUser($user_id)
+    // {
+    //     $sql = "SELECT * FROM posts WHERE user_id = ?";
+    //     $stmt = $this->mysqli->prepare($sql);
+    //     $stmt->bind_param("i", $user_id);
+    //     $stmt->execute();
+    //     $result = $stmt->get_result();
+    //     $existingData = $result->fetch_assoc();
+    //     $stmt->close();
     
-        return $existingData;
-    }
+    //     return $existingData;
+    // }
 
 
 
     public function postInfo($data)
     {
-        $getPostUser = $this->getPostUser($data['user_id']);
+        $sql = "INSERT INTO posts (businessname, regnum, address, bank, swift, bankaccnum, user_id, post_image)
+        VALUES (?,?,?,?,?,?,?,
+        ?)";
+        $stmt = $this->mysqli->prepare($sql);
+        $stmt->bind_param("ssssssis", $data['businessname'],
+                                      $data['regnum'], 
+                                      $data['address'], 
+                                      $data['bank'],
+                                      $data['swift'], 
+                                      $data['bankaccnum'], 
+                                      $data['user_id'],
+                                      $data['post_image'],);
     
-        if ($getPostUser) {
-            $sql = "UPDATE posts SET businessname = ?, regnum = ?, address = ?, bank = ?, swift = ?, bankaccnum = ?, post_image = ? WHERE user_id = ?";
-            $stmt = $this->mysqli->prepare($sql);
-            $stmt->bind_param("sssssssi", $data['businessname'],
-                                          $data['regnum'], 
-                                          $data['address'], 
-                                          $data['bank'],
-                                          $data['swift'], 
-                                          $data['bankaccnum'],
-                                          $data['post_image'], 
-                                          $data['user_id'],);
+        $stmt->execute();
+        $stmt->close();
+    
+        return true;
+    }
 
-        } else {
-            $sql = "INSERT INTO posts (businessname, regnum, address, bank, swift, bankaccnum, created_at, user_id, post_image)
-            VALUES (?,?,?,?,?,?, NOW(), ?, ?)";
-            $stmt = $this->mysqli->prepare($sql);
-            $stmt->bind_param("ssssssis", $data['businessname'],
-                                          $data['regnum'], 
-                                          $data['address'], 
-                                          $data['bank'],
-                                          $data['swift'], 
-                                          $data['bankaccnum'], 
-                                          $data['user_id'],
-                                          $data['post_image'],);
-        }
+    public function updateInfo($data)
+    {
+        $sql = "UPDATE posts SET businessname = ?, regnum = ?, address = ?, bank = ?, swift = ?, bankaccnum = ? WHERE user_id = ?";
+        $stmt = $this->mysqli->prepare($sql);
+        $stmt->bind_param("ssssssi", $data['businessname'],
+                                     $data['regnum'], 
+                                     $data['address'], 
+                                     $data['bank'],
+                                     $data['swift'], 
+                                     $data['bankaccnum'],
+                                     $data['user_id'],);
+
+        $stmt->execute();
+        $stmt->close();
     
+        return true;
+    }
+
+    public function updateInfoImage($data)
+    {
+        $sql = "UPDATE posts SET post_image = ? WHERE user_id = ?";
+        $stmt = $this->mysqli->prepare($sql);
+        $stmt->bind_param("si", $data['post_image'],
+                                $data['user_id'],);
+
         $stmt->execute();
         $stmt->close();
     

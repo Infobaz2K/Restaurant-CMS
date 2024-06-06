@@ -71,15 +71,10 @@ echo "Session User ID: " . $_SESSION['user_id']; // Debugging output
 
         <div class="main-inner">
             <div class="post-container">
-                <form method="POST" enctype="multipart/form-data">
-                    <?php $found = false; ?>
-                    <?php foreach ($posts as $post): ?>
-                            <?php
-                            // echo "<pre>";
-                            // echo print_r($post);
-                            // echo "</pre>";
-                            ?>
-                            <div class="post-info">
+                <?php $found = false; ?>
+                <?php foreach ($posts as $post): ?>
+                        <div class="post-info">
+                            <form method="POST">
                                 <div class="post-info-col">
                                     <div class="post-info-col-1">
                                         <p>Uzņēmuma nosaukums:</p>
@@ -98,27 +93,39 @@ echo "Session User ID: " . $_SESSION['user_id']; // Debugging output
                                         <input type="text" id="bankaccnum" name="bankaccnum" value="<?php echo htmlspecialchars($post['bankaccnum'] ?? ''); ?>">
                                     </div>
                                 </div>
+
+                                <input type="hidden" name="action" value="updateInfo">
+
+                            </form>
+
+                            <form id="autoPostImage" method="POST" enctype="multipart/form-data">
                                 <div class="post-info-img">
                                     <p>Uzņēmuma logo:</p>
-                                    <input type="file" id="post_image" name="post_image" accept=".jpg, .jpeg, .png" value="">
+                                    <input type="file" id="post_image" name="post_image" accept=".jpg, .jpeg, .png">
                                     <label for="post_image">
                                         <?php if (!empty($post['post_image'])): ?>
-                                            <div class="post-info-img-box"><img src="<?php echo htmlspecialchars($post['post_image']); ?>"></div>
+                                            <div class="post-info-img-box"><img src="<?php echo $post['post_image']; ?>"></div>
                                         <?php else: ?>
                                             <p>Nav uzņēmuma logo</p>
                                         <?php endif; ?>
                                     </label>
                                     <span id="file-name">Klikšķiniet uz logo, lai nomainītu</span>
                                 </div>
-                                <input type="hidden" name="action" value="postInfo">
-                                <button type="submit">Saglabāt</button>
+                                <input type="hidden" name="action" value="updateInfoImage">
+                            </form>
+                            
+                            <div>
+                                <button id="saveButton" type="submit">Saglabāt</button>
                                 <a class="button" href="client_start.php?user_id=<?php echo $post['user_id']; ?>">klienta skats</a>
                             </div>
-                            <?php $found = true; ?>
-                    <?php endforeach; ?>
 
-                    <?php if (!$found): ?>
-                        <div class="post-info">
+                        </div>
+                        <?php $found = true; ?>
+                <?php endforeach; ?>
+
+                <?php if (!$found): ?>
+                    <div class="post-info">
+                        <form method="POST" enctype="multipart/form-data">
                             <div class="post-info-col">
                                 <div class="post-info-col-1">
                                     <p>Uzņēmuma nosaukums:</p>
@@ -147,9 +154,9 @@ echo "Session User ID: " . $_SESSION['user_id']; // Debugging output
                             </div>
                             <input type="hidden" name="action" value="postInfo">
                             <button type="submit">Pievienot <i class="fa-solid fa-arrow-right" style="color: #000000;"></i></button>
-                        </div>
-                    <?php endif; ?>
-                </form>
+                        </form>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
 

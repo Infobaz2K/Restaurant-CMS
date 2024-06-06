@@ -83,23 +83,6 @@ html, body {
     input:checked + .slider:before {
         transform: translateX(20px);            
     }
-    
-    /* .button {
-        display: inline-block;
-        padding: 8px 16px;
-        border: 1px solid #D3CFD0;
-        background-color: white;
-        text-decoration: none;
-        transition: background-color 0.3s;
-        margin-right: 10px;
-        color: black;
-    }
-
-    .button:hover {
-        background-color: #D3CFD0;
-        border-color: #D3CFD0;
-        color: black;
-    } */
 
     .post-container, .create-food-menu-container {
         margin-bottom: 20px;

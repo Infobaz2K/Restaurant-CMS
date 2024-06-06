@@ -120,7 +120,7 @@ class dbconnect
         return true;
     }
 
-    public function updateInfo($data)
+    public function editInfo($data)
     {
         $sql = "UPDATE posts SET businessname = ?, regnum = ?, address = ?, bank = ?, swift = ?, bankaccnum = ? WHERE user_id = ?";
         $stmt = $this->mysqli->prepare($sql);
@@ -138,7 +138,7 @@ class dbconnect
         return true;
     }
 
-    public function updateInfoImage($data)
+    public function editInfoImage($data)
     {
         $sql = "UPDATE posts SET post_image = ? WHERE user_id = ?";
         $stmt = $this->mysqli->prepare($sql);
@@ -175,8 +175,6 @@ class dbconnect
     }
 
 
-
-
     public function createMenu($data)
     {
         $sql = "INSERT INTO menu (menu_name, public, user_id)
@@ -189,7 +187,6 @@ class dbconnect
         return true;
     }
     
-
 
     public function getMenu($user_id)
     {
@@ -211,6 +208,8 @@ class dbconnect
     }
 
     
+
+
 
     public function deleteMenu($menu_id)
     {
@@ -304,11 +303,26 @@ class dbconnect
 
     public function editCategory($data) {
         
-        $sql = "UPDATE categories SET category_name = ?, category_public = ?, category_position = ?, cat_image = ? WHERE id = ?";
+        $sql = "UPDATE categories SET category_name = ?, category_public = ?, category_position = ? WHERE id = ?";
 
         $stmt = $this->mysqli->prepare($sql);
     
-        $stmt->bind_param("sissi", $data['edit_cat_name'], $data['edit_cat_public'], $data['edit_cat_pos'], $data['edit_cat_image'] , $data['Id']);
+        $stmt->bind_param("sisi", $data['edit_cat_name'], $data['edit_cat_public'], $data['edit_cat_pos'], $data['Id']);
+        $stmt->execute();
+        $stmt->close();
+    
+        return true;
+    }
+
+
+
+    public function editCategoryImage($data) {
+        
+        $sql = "UPDATE categories SET cat_image = ? WHERE id = ?";
+
+        $stmt = $this->mysqli->prepare($sql);
+    
+        $stmt->bind_param("si", $data['edit_cat_image'] , $data['Id']);
         $stmt->execute();
         $stmt->close();
     

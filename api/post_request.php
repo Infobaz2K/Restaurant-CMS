@@ -120,48 +120,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         }
 
-        if ($action == 'updateInfo') {
-
-            $postData = [
-                'action'                  => $action,
-                'businessname'            => htmlspecialchars($_POST['businessname']),
-                'regnum'                  => htmlspecialchars($_POST['regnum']),   
-                'address'                 => htmlspecialchars($_POST['address']),
-                'bank'                    => htmlspecialchars($_POST['bank']),
-                'swift'                   => htmlspecialchars($_POST['swift']),
-                'bankaccnum'              => htmlspecialchars($_POST['bankaccnum']),
-                'user_id'                 => $_SESSION['user_id'],
-            ];
-            $response = $apiRequest->postRequest($postData);
-        
-        }
-
-        if ($action == 'updateInfoImage') {
-
-            $target_dir = "uploads/";
-            $target_file = null;
-
-            if ($_FILES["post_image"]["size"] > 0) {
-
-                $file_extension = strtolower(pathinfo($_FILES["post_image"]["name"], PATHINFO_EXTENSION));
-
-                if (in_array($file_extension, array("jpg", "jpeg", "png"))) {
-
-                    $target_file = $target_dir . basename($_FILES["post_image"]["name"]);
-                    move_uploaded_file($_FILES["post_image"]["tmp_name"], $target_file);
-
-                }
-            }
-
-            $postData = [
-                'action'                  => $action,
-                'user_id'                 => $_SESSION['user_id'],
-                'post_image'              => $target_file,
-            ];
-            $response = $apiRequest->postRequest($postData);
-        
-        }
-
         if ($action == 'createMenu') {
             $menuPublic = isset($_POST['menu_public']) ? 1 : 0;
             
@@ -273,6 +231,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
+
+        if ($action == 'editInfo') {
+
+            $postData = [
+                'action'                  => $action,
+                'businessname'            => htmlspecialchars($_POST['businessname']),
+                'regnum'                  => htmlspecialchars($_POST['regnum']),   
+                'address'                 => htmlspecialchars($_POST['address']),
+                'bank'                    => htmlspecialchars($_POST['bank']),
+                'swift'                   => htmlspecialchars($_POST['swift']),
+                'bankaccnum'              => htmlspecialchars($_POST['bankaccnum']),
+                'user_id'                 => $_SESSION['user_id'],
+            ];
+            $response = $apiRequest->postRequest($postData);
+        
+        }
+
+        if ($action == 'editInfoImage') {
+
+            $target_dir = "uploads/";
+            $target_file = null;
+
+            if ($_FILES["post_image"]["size"] > 0) {
+
+                $file_extension = strtolower(pathinfo($_FILES["post_image"]["name"], PATHINFO_EXTENSION));
+
+                if (in_array($file_extension, array("jpg", "jpeg", "png"))) {
+
+                    $target_file = $target_dir . basename($_FILES["post_image"]["name"]);
+                    move_uploaded_file($_FILES["post_image"]["tmp_name"], $target_file);
+
+                }
+            }
+
+            $postData = [
+                'action'                  => $action,
+                'user_id'                 => $_SESSION['user_id'],
+                'post_image'              => $target_file,
+            ];
+            $response = $apiRequest->postRequest($postData);
+        
+        }
+
         if ($action === 'editMenu') {
             $menuPublic = isset($_POST['edit_menu_public']) ? 1 : 0;
             $menu_id = $_POST['Id'];
@@ -288,6 +289,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($action === 'editCategory') {
             $catPublic = isset($_POST['edit_cat_public']) ? 1 : 0;
+            $cat_id = $_POST['Id'];
+
+            $postData = [
+                'Id'                => $cat_id,
+                'action'            => $action,
+                'edit_cat_name'     => htmlspecialchars($_POST['edit_cat_name']),
+                'edit_cat_pos'      => htmlspecialchars($_POST['edit_cat_pos']),
+                'edit_cat_public'   => htmlspecialchars($catPublic),
+            ];
+            $response = $apiRequest->postRequest($postData);
+        }
+
+        if ($action === 'editCategoryImage') {
             $cat_id = $_POST['Id'];
 
             $target_dir = "uploads/";
@@ -308,10 +322,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $postData = [
                 'Id'                => $cat_id,
                 'action'            => $action,
-                'edit_cat_name'     => htmlspecialchars($_POST['edit_cat_name']),
-                'edit_cat_pos'      => htmlspecialchars($_POST['edit_cat_pos']),
                 'edit_cat_image'    => $target_file,
-                'edit_cat_public'   => htmlspecialchars($catPublic),
             ];
             $response = $apiRequest->postRequest($postData);
         }

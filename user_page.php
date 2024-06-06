@@ -94,7 +94,7 @@ echo "Session User ID: " . $_SESSION['user_id']; // Debugging output
                                     </div>
                                 </div>
 
-                                <input type="hidden" name="action" value="updateInfo">
+                                <input type="hidden" name="action" value="editInfo">
 
                             </form>
 
@@ -111,7 +111,7 @@ echo "Session User ID: " . $_SESSION['user_id']; // Debugging output
                                     </label>
                                     <span id="file-name">Klikšķiniet uz logo, lai nomainītu</span>
                                 </div>
-                                <input type="hidden" name="action" value="updateInfoImage">
+                                <input type="hidden" name="action" value="editInfoImage">
                             </form>
                             
                             <div>

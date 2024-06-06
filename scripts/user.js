@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
 //
 
 
-//text image upload
+//text image uploads span
 
 document.getElementById('post_image').addEventListener('change', function() {
     var fileName = this.files[0].name;
@@ -31,7 +31,7 @@ document.getElementById('post_image').addEventListener('change', function() {
 document.getElementById('saveButton').addEventListener('click', function() {
     var form = document.querySelector('.post-info form');
     
-    form.querySelector('input[name="action"]').value = 'updateInfo';
+    form.querySelector('input[name="action"]').value = 'editInfo';
     form.submit();
 });
 
@@ -40,7 +40,6 @@ document.getElementById('saveButton').addEventListener('click', function() {
 // auto submit update image
 
 document.getElementById('post_image').addEventListener('change', function() {
-    console.log("Form submitted!");
     document.getElementById('autoPostImage').submit();
 });
 

@@ -64,29 +64,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $result = $db->postInfo($data);
         }
 
-        if ($action === 'updateInfo') {
-            $data = [
-                'businessname'      => $postData['businessname'],
-                'regnum'            => $postData['regnum'],
-                'address'           => $postData['address'],
-                'bank'              => $postData['bank'],
-                'swift'             => $postData['swift'],
-                'bankaccnum'        => $postData['bankaccnum'],
-                'user_id'           => $postData['user_id'],
-            ];
-        
-            $result = $db->updateInfo($data);
-        }
-
-        if ($action === 'updateInfoImage') {
-            $data = [
-                'user_id'           => $postData['user_id'],
-                'post_image'         => $postData['post_image'],
-            ];
-        
-            $result = $db->UpdateInfoImage($data);
-        }
-
         if ($action === 'createMenu') {
             $data = [
                 'menu_name'      => $postData['menu_name'],
@@ -150,6 +127,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 
+        
+        if ($action === 'editInfo') {
+            $data = [
+                'businessname'      => $postData['businessname'],
+                'regnum'            => $postData['regnum'],
+                'address'           => $postData['address'],
+                'bank'              => $postData['bank'],
+                'swift'             => $postData['swift'],
+                'bankaccnum'        => $postData['bankaccnum'],
+                'user_id'           => $postData['user_id'],
+            ];
+        
+            $result = $db->editInfo($data);
+        }
+
+        if ($action === 'editInfoImage') {
+            $data = [
+                'user_id'           => $postData['user_id'],
+                'post_image'         => $postData['post_image'],
+            ];
+        
+            $result = $db->editInfoImage($data);
+        }
+
         if ($action === 'editMenu') {
             
             $data = [
@@ -168,10 +169,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'edit_cat_name'   => $postData['edit_cat_name'],
                 'edit_cat_pos'    => $postData['edit_cat_pos'],
                 'edit_cat_public' => $postData['edit_cat_public'],
-                'edit_cat_image'  => $postData['edit_cat_image'],
             ];
         
             $result = $db->editCategory($data);
+        }
+
+        if ($action === 'editCategoryImage') {
+            
+            $data = [
+                'Id'              => $postData['Id'],
+                'edit_cat_image'  => $postData['edit_cat_image'],
+            ];
+        
+            $result = $db->editCategoryImage($data);
         }
 
         if ($action === 'editFood') {

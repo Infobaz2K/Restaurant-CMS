@@ -66,3 +66,45 @@ document.addEventListener('change', function(e) {
     }
 });
 
+//
+
+//save button onlick by id
+
+document.addEventListener('DOMContentLoaded', function() {
+    var buttons = document.querySelectorAll('.orangebtn');
+    
+    buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+
+            var catId = button.id.split('-').pop();
+            var form = document.getElementById('categoryForm-' + catId);
+            
+            if (form) {
+                form.querySelector('input[name="action"]').value = 'editCategory';
+                form.submit();
+            }
+        });
+    });
+});
+
+//
+
+// auto submit update image by id
+
+document.addEventListener('DOMContentLoaded', function() {
+    var fileInputs = document.querySelectorAll('.edit_cat_image');
+    
+    fileInputs.forEach(function(input) {
+        input.addEventListener('change', function() {
+
+            var catId = input.id.split('-').pop();
+            var form = document.getElementById('autoCategoryImage-' + catId);
+            if (form) {
+                form.submit();
+            }
+        });
+    });
+});
+
+//
+

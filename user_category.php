@@ -127,24 +127,36 @@ if (!isset($_SESSION['user_id'])) {
                             </div>
 
                             <div id="category-edit-popup-<?php echo $cat['id']; ?>" class="category-edit-popup">
-                                <form method="POST" enctype="multipart/form-data">
-                                    <div class="category-edit-popup-content">
-                                        <div class="category-edit-popup-content-head">
-                                            <h1>Izmaini ēdienkarti</h1>
-                                            <span class="category-edit-close" onclick="closeEditCatPopup(<?php echo $cat['id']; ?>)">&times;</span>
-                                        </div>
+                                <div class="category-edit-popup-content">
+                                    <div class="category-edit-popup-content-head">
+                                        <h1>Izmaini ēdienkarti</h1>
+                                        <span class="category-edit-close" onclick="closeEditCatPopup(<?php echo $cat['id']; ?>)">&times;</span>
+                                    </div>
 
-                                        <div class="category-edit-popup-content-info">
+                                    <div class="category-edit-popup-content-info">
+                                        <form id="categoryForm-<?php echo $cat['id']; ?>" method="POST">
                                             <div>
                                                 <p>Kategorijas nosaukums</p>
-                                                <input type="text" id="edit_cat_name" name="edit_cat_name" value="<?php echo htmlspecialchars($cat['category_name']); ?>">
+                                                <input type="text" id="edit_cat_name-<?php echo $cat['id']; ?>" name="edit_cat_name" value="<?php echo htmlspecialchars($cat['category_name']); ?>">
                                             </div>
 
                                             <div>
                                                 <p>Kategorijas pozīcija</p>
-                                                <input type="text" id="edit_cat_pos" name="edit_cat_pos" value="<?php echo htmlspecialchars($cat['category_position']); ?>">
+                                                <input type="text" id="edit_cat_pos-<?php echo $cat['id']; ?>" name="edit_cat_pos" value="<?php echo htmlspecialchars($cat['category_position']); ?>">
                                             </div>
 
+                                            <div class="category-edit-popup-content-info-public">
+                                                <p>Publicēts</p>
+                                                <label class="switch">
+                                                    <input type="checkbox" id="edit_cat_public-<?php echo $cat['id']; ?>" name="edit_cat_public" value="1" <?php echo $cat['category_public'] ? 'checked' : ''; ?>>
+                                                    <span class="slider"></span>
+                                                </label>
+                                            </div>
+                                            <input type="hidden" name="action" value="editCategory">
+                                            <input type="hidden" name="Id" value="<?php echo $cat['id']; ?>">
+                                        </form> 
+
+                                        <form id="autoCategoryImage-<?php echo $cat['id']; ?>" method="POST" enctype="multipart/form-data">
                                             <div class="category-edit-popup-content-info-pub-img">
                                                 <div class="category-edit-popup-content-info-img">
                                                     <p>Foto</p>
@@ -154,26 +166,19 @@ if (!isset($_SESSION['user_id'])) {
                                                     </label>
                                                     <span id="edit-file-name-<?php echo $cat['id']; ?>">Izvēlies bildi</span>
                                                 </div>
-                                                
-                                                <div>
-                                                    <p>Publicēts</p>
-                                                    <label class="switch">
-                                                        <input type="checkbox" id="edit_cat_public" name="edit_cat_public" value="1" <?php echo $cat['category_public'] ? 'checked' : ''; ?>>
-                                                        <span class="slider"></span>
-                                                    </label>
-                                                </div>  
                                             </div>
-
-                                        </div>
-
-                                        <div class="category-edit-popup-content-btn">
-                                            <input type="hidden" name="action" value="editCategory">
+                                            <input type="hidden" name="action" value="editCategoryImage">
                                             <input type="hidden" name="Id" value="<?php echo $cat['id']; ?>">
-                                            <button type="submit" class="orangebtn" id="editCategory">Saglabāt</button>
-                                            <a href="user_food.php?category_id=<?php echo $cat['id']; ?>">Rediģēt ēdienu</a>
-                                        </div>
+                                        </form>
+
+
                                     </div>
-                                </form>
+
+                                    <div class="category-edit-popup-content-btn">
+                                        <button type="button" class="orangebtn" id="editCategoryButton-<?php echo $cat['id']; ?>">Saglabāt</button>
+                                        <a href="user_food.php?category_id=<?php echo $cat['id']; ?>">Rediģēt ēdienu</a>
+                                    </div>
+                                </div>
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>

@@ -94,11 +94,6 @@ if (!isset($_SESSION['user_id'])) {
 
                 <div class="food-table-container">
                     <?php foreach ($foods as $food):?>
-                        <?php
-                        // echo '<pre>';
-                        // print_r($food);
-                        // echo '</pre>';
-                        ?>
                         <div class="food-table">
 
                             <div class="food-table-item">
@@ -219,6 +214,7 @@ if (!isset($_SESSION['user_id'])) {
                                                     <span class="slider"></span>
                                                 </label>
                                             </div>
+                                            
                                             <input type="hidden" name="action" value="editFood">
                                             <input type="hidden" name="Id" value="<?php echo $food['id']; ?>">
                                         </form>
@@ -244,8 +240,6 @@ if (!isset($_SESSION['user_id'])) {
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
                     <?php endforeach;?>
                 </div>

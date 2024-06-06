@@ -68,7 +68,7 @@ document.addEventListener('change', function(e) {
 
 //
 
-//save button onlick by id
+// save button onlick by id
 
 document.addEventListener('DOMContentLoaded', function() {
     var buttons = document.querySelectorAll('.orangebtn');

@@ -467,7 +467,7 @@ class dbconnect
                     food_position = ?,
                     price = ?,
                     activestart = ?,
-                    activeend = ?,
+                    activeend = ?
                 WHERE id = ?";
 
         $stmt = $this->mysqli->prepare($sql);
@@ -489,39 +489,23 @@ class dbconnect
         return true;
     }
 
-    // public function editFoodImage($data) {
+    public function editFoodImage($data) {
         
-    //     $sql = "UPDATE foods SET 
-    //                 food_name = ?,
-    //                 food_public = ?,
-    //                 description = ?,
-    //                 cooktime = ?,
-    //                 food_position = ?,
-    //                 price = ?,
-    //                 activestart = ?,
-    //                 activeend = ?,
-    //                 food_image = ? 
-    //             WHERE id = ?";
+        $sql = "UPDATE foods SET 
+                    food_image = ? 
+                WHERE id = ?";
 
-    //     $stmt = $this->mysqli->prepare($sql);
+        $stmt = $this->mysqli->prepare($sql);
     
-    //     $stmt->bind_param("sisssdsssi",
-    //                               $data['edit_food_name'], 
-    //                               $data['edit_food_public'], 
-    //                               $data['edit_description'],
-    //                               $data['edit_cooktime'],
-    //                               $data['edit_food_position'],
-    //                               $data['edit_price'],
-    //                               $data['edit_activestart'],
-    //                               $data['edit_activeend'],
-    //                               $data['edit_food_image'], 
-    //                               $data['Id']
-    //                     );
-    //     $stmt->execute();
-    //     $stmt->close();
+        $stmt->bind_param("si",
+                                $data['edit_food_image'], 
+                                $data['Id']
+                        );
+        $stmt->execute();
+        $stmt->close();
     
-    //     return true;
-    // }
+        return true;
+    }
 
 
     

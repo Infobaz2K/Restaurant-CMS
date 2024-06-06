@@ -79,3 +79,41 @@ function closeEditFoodPopup(food_id) {
         document.body.style.overflow = '';
     }
 }
+
+//
+
+//save button onlick by id
+
+document.addEventListener('DOMContentLoaded', function() {
+    var buttons = document.querySelectorAll('.orangebtn');
+    
+    buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var foodId = button.id.split('-').pop(); // Corrected to use foodId
+            var form = document.getElementById('foodForm-' + foodId);
+            
+            if (form) {
+                form.querySelector('input[name="action"]').value = 'editFood';
+                form.submit();
+            }
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    var fileInputs = document.querySelectorAll('.edit_food_image'); // Corrected class name
+    
+    fileInputs.forEach(function(input) {
+        input.addEventListener('change', function() {
+            var foodId = input.id.split('-').pop(); // Corrected to use foodId
+            var form = document.getElementById('autoFoodImage-' + foodId); // Corrected form ID
+            
+            if (form) {
+                form.submit();
+            }
+        });
+    });
+});
+
+
+//

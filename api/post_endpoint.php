@@ -201,23 +201,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $result = $db->editFood($data);
         }
 
-        // if ($action === 'editFoodImage') {
+        if ($action === 'editFoodImage') {
             
-        //     $data = [
-        //         'Id'                 => $postData['Id'],
-        //         'edit_food_name'     => $postData['edit_food_name'],
-        //         'edit_food_public'   => $postData['edit_food_public'],
-        //         'edit_description'   => $postData['edit_description'],
-        //         'edit_cooktime'      => $postData['edit_cooktime'],
-        //         'edit_food_position' => $postData['edit_food_position'],
-        //         'edit_price'         => $postData['edit_price'],
-        //         'edit_activestart'   => $postData['edit_activestart'],
-        //         'edit_activeend'     => $postData['edit_activeend'],
-        //         'edit_food_image'    => $postData['edit_food_image'],
-        //     ];
+            $data = [
+                'Id'                 => $postData['Id'],
+                'edit_food_image'    => $postData['edit_food_image'],
+            ];
         
-        //     $result = $db->editFoodImage($data);
-        // }
+            $result = $db->editFoodImage($data);
+        }
         
         
 

@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     buttons.forEach(function(button) {
         button.addEventListener('click', function() {
-            var foodId = button.id.split('-').pop(); // Corrected to use foodId
+            var foodId = button.id.split('-').pop();
             var form = document.getElementById('foodForm-' + foodId);
             
             if (form) {
@@ -100,13 +100,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+//
+
+// auto submit update image by id
+
 document.addEventListener('DOMContentLoaded', function() {
-    var fileInputs = document.querySelectorAll('.edit_food_image'); // Corrected class name
+    var fileInputs = document.querySelectorAll('.edit_food_image');
     
     fileInputs.forEach(function(input) {
         input.addEventListener('change', function() {
-            var foodId = input.id.split('-').pop(); // Corrected to use foodId
-            var form = document.getElementById('autoFoodImage-' + foodId); // Corrected form ID
+            var foodId = input.id.split('-').pop();
+            var form = document.getElementById('autoFoodImage-' + foodId);
             
             if (form) {
                 form.submit();

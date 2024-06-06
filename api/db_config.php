@@ -378,6 +378,8 @@ class dbconnect
         return $data;
     }
 
+
+
     public function getFoodInfo($food_id) {
         $sql = "SELECT * FROM foods
                 WHERE id = ?";
@@ -466,12 +468,11 @@ class dbconnect
                     price = ?,
                     activestart = ?,
                     activeend = ?,
-                    food_image = ? 
                 WHERE id = ?";
 
         $stmt = $this->mysqli->prepare($sql);
     
-        $stmt->bind_param("sisssdsssi",
+        $stmt->bind_param("sisssdssi",
                                   $data['edit_food_name'], 
                                   $data['edit_food_public'], 
                                   $data['edit_description'],
@@ -479,8 +480,7 @@ class dbconnect
                                   $data['edit_food_position'],
                                   $data['edit_price'],
                                   $data['edit_activestart'],
-                                  $data['edit_activeend'],
-                                  $data['edit_food_image'], 
+                                  $data['edit_activeend'], 
                                   $data['Id']
                         );
         $stmt->execute();
@@ -488,6 +488,40 @@ class dbconnect
     
         return true;
     }
+
+    // public function editFoodImage($data) {
+        
+    //     $sql = "UPDATE foods SET 
+    //                 food_name = ?,
+    //                 food_public = ?,
+    //                 description = ?,
+    //                 cooktime = ?,
+    //                 food_position = ?,
+    //                 price = ?,
+    //                 activestart = ?,
+    //                 activeend = ?,
+    //                 food_image = ? 
+    //             WHERE id = ?";
+
+    //     $stmt = $this->mysqli->prepare($sql);
+    
+    //     $stmt->bind_param("sisssdsssi",
+    //                               $data['edit_food_name'], 
+    //                               $data['edit_food_public'], 
+    //                               $data['edit_description'],
+    //                               $data['edit_cooktime'],
+    //                               $data['edit_food_position'],
+    //                               $data['edit_price'],
+    //                               $data['edit_activestart'],
+    //                               $data['edit_activeend'],
+    //                               $data['edit_food_image'], 
+    //                               $data['Id']
+    //                     );
+    //     $stmt->execute();
+    //     $stmt->close();
+    
+    //     return true;
+    // }
 
 
     

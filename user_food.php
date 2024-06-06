@@ -172,79 +172,79 @@ if (!isset($_SESSION['user_id'])) {
                             </div>
 
                             <div id="food-edit-popup-<?php echo $food['id']; ?>" class="food-edit-popup">
-                                <form method="POST" enctype="multipart/form-data">
-                                    <div class="food-edit-popup-content">
-                                        <?php //echo $food['id']; ?>
-                                        <div class="food-edit-popup-content-head">
-                                            <h1>Izmaini ēdienu</h1>
-                                            <span class="food-edit-close" onclick="closeEditFoodPopup(<?php echo $food['id']; ?>)">&times;</span>
-                                        </div>
+                                <div class="food-edit-popup-content">
+                                    <div class="food-edit-popup-content-head">
+                                        <h1>Izmaini ēdienu</h1>
+                                        <span class="food-edit-close" onclick="closeEditFoodPopup(<?php echo $food['id']; ?>)">&times;</span>
+                                    </div>
 
-                                        <div class="food-edit-popup-content-info">
-                                            <div class="food-edit-popup-content-info-left">
-                                                <div>
-                                                    <p>Produkta nosaukums</p>
-                                                    <input type="text" id="edit_food_name" name="edit_food_name" value="<?php echo htmlspecialchars($food['food_name']); ?>">
-                                                </div>
-
-                                                <div>
-                                                    <p>Ēdiena apraksts</p>
-                                                    <input type="text" id="edit_description" name="edit_description" value="<?php echo htmlspecialchars($food['description']); ?>">
-                                                </div>
-
-                                                <div>
-                                                    <p>Pagatavošanas laiks</p>
-                                                    <input type="text" id="edit_cooktime" name="edit_cooktime" value="<?php echo htmlspecialchars($food['cooktime']); ?>">
-                                                </div>
-                                            </div>
-
-                                            <div class="food-edit-popup-content-info-right">
-                                                <div>
-                                                    <p>Pozīcija</p>
-                                                    <input type="text" id="edit_food_position" name="edit_food_position" value="<?php echo htmlspecialchars($food['food_position']); ?>">
-                                                </div>
-
-                                                <div>
-                                                    <p>Cena</p>
-                                                    <input type="text" class="edit_price" name="edit_price" value="<?php echo htmlspecialchars($food['price']); ?>">
-                                                </div>
-
-                                                <div class="food-edit-popup-content-info-photo-active">
-                                                    <div>
-                                                        <p>Foto</p>
-                                                        <input type="file" id="edit_food_image-<?php echo $food['id']; ?>" name="edit_food_image" class="edit_food_image" accept=".jpg, .jpeg, .png" value="">
-                                                        <label for="edit_food_image-<?php echo $food['id']; ?>">
-                                                            <i class="fa-regular fa-cloud-arrow-up" style="color: #5e5e5e;"></i>
-                                                        </label>
-                                                        <span id="edit-file-name-<?php echo $food['id']; ?>">Izvēlies bildi</span>
-                                                    </div>
-
-                                                    <div class="food-popup-insert-time">
-                                                        <p>Aktīvs</p>
-                                                        <input type="time" id="edit_activestart" name="edit_activestart" value="<?php echo substr(htmlspecialchars($food['activestart']), 0, 5); ?>">
-                                                        <input type="time" id="edit_activeend" name="edit_activeend" value="<?php echo substr(htmlspecialchars($food['activeend']), 0, 5); ?>">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="add-save-food-popup">
+                                    <div class="food-edit-popup-content-info">
+                                        <form id="foodForm-<?php echo $food['id']; ?>" method="POST">
                                             <div>
+                                                <p>Produkta nosaukums</p>
+                                                <input type="text" id="edit_food_name-<?php echo $food['id']; ?>" name="edit_food_name" value="<?php echo htmlspecialchars($food['food_name']); ?>">
+                                            </div>
+
+                                            <div>
+                                                <p>Ēdiena apraksts</p>
+                                                <input type="text" id="edit_description-<?php echo $food['id']; ?>" name="edit_description" value="<?php echo htmlspecialchars($food['description']); ?>">
+                                            </div>
+
+                                            <div>
+                                                <p>Pagatavošanas laiks</p>
+                                                <input type="text" id="edit_cooktime-<?php echo $food['id']; ?>" name="edit_cooktime" value="<?php echo htmlspecialchars($food['cooktime']); ?>">
+                                            </div>
+
+                                            <div>
+                                                <p>Pozīcija</p>
+                                                <input type="text" id="edit_food_position-<?php echo $food['id']; ?>" name="edit_food_position" value="<?php echo htmlspecialchars($food['food_position']); ?>">
+                                            </div>
+
+                                            <div>
+                                                <p>Cena</p>
+                                                <input type="text" class="edit_price" name="edit_price" value="<?php echo htmlspecialchars($food['price']); ?>">
+                                            </div>
+
+                                            <div class="food-popup-insert-time">
+                                                <p>Aktīvs</p>
+                                                <input type="time" id="edit_activestart-<?php echo $food['id']; ?>" name="edit_activestart" value="<?php echo substr(htmlspecialchars($food['activestart']), 0, 5); ?>">
+                                                <input type="time" id="edit_activeend-<?php echo $food['id']; ?>" name="edit_activeend" value="<?php echo substr(htmlspecialchars($food['activeend']), 0, 5); ?>">
+                                            </div>
+                                        
+                                            <div class="food-popup-public">
                                                 <p>Publicēts</p>
                                                 <label class="switch">
-                                                    <input type="checkbox" id="edit_food_public" name="edit_food_public" 
+                                                    <input type="checkbox" id="edit_food_public-<?php echo $food['id']; ?>" name="edit_food_public" 
                                                         value="1" <?php echo $food['food_public'] ? 'checked' : ''; ?>>
                                                     <span class="slider"></span>
                                                 </label>
                                             </div>
                                             <input type="hidden" name="action" value="editFood">
                                             <input type="hidden" name="Id" value="<?php echo $food['id']; ?>">
-                                            <button type="submit" class="orangebtn" id="editFood">Saglabāt</button>
-                                        </div>
+                                        </form>
 
+                                        <div class="food-edit-popup-content-info-photo-active">
+                                            <form id="autoFoodImage-<?php echo $food['id']; ?>" method="POST" enctype="multipart/form-data">
+                                                <div>
+                                                    <p>Foto</p>
+                                                    <input type="file" id="edit_food_image-<?php echo $food['id']; ?>" name="edit_food_image" class="edit_food_image" accept=".jpg, .jpeg, .png" value="">
+                                                    <label for="edit_food_image-<?php echo $food['id']; ?>">
+                                                        <i class="fa-regular fa-cloud-arrow-up" style="color: #5e5e5e;"></i>
+                                                    </label>
+                                                    <span id="edit-file-name-<?php echo $food['id']; ?>">Izvēlies bildi</span>
+                                                </div>
+                                                <input type="hidden" name="action" value="editFoodImage">
+                                                <input type="hidden" name="Id" value="<?php echo $food['id']; ?>">
+                                            </form>
+                                        </div>
                                     </div>
-                                </form>
+
+                                    <div class="add-save-food-popup">
+                                        <button type="button" class="orangebtn" id="editFoodButton-<?php echo $food['id']; ?>">Saglabāt</button>
+                                    </div>
+                                </div>
                             </div>
+
 
                         </div>
                     <?php endforeach;?>

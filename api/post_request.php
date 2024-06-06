@@ -331,21 +331,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $foodPublic = isset($_POST['edit_food_public']) ? 1 : 0;
             $food_id = $_POST['Id'];
 
-            $target_dir = "uploads/";
-            $target_file = null;
-
-            if ($_FILES["edit_food_image"]["size"] > 0) {
-
-                $file_extension = strtolower(pathinfo($_FILES["edit_food_image"]["name"], PATHINFO_EXTENSION));
-
-                if (in_array($file_extension, array("jpg", "jpeg", "png"))) {
-
-                    $target_file = $target_dir . basename($_FILES["edit_food_image"]["name"]);
-                    move_uploaded_file($_FILES["edit_food_image"]["tmp_name"], $target_file);
-
-                }
-            }
-
             $postData = [
                 'Id'                 => $food_id,
                 'action'             => $action,
@@ -356,11 +341,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 'edit_price'         => htmlspecialchars($_POST['edit_price']),
                 'edit_activestart'   => htmlspecialchars($_POST['edit_activestart']),
                 'edit_activeend'     => htmlspecialchars($_POST['edit_activeend']),
-                'edit_food_image'    => $target_file,
                 'edit_food_public'   => htmlspecialchars($foodPublic),
             ];
             $response = $apiRequest->postRequest($postData);
         }
+
+        // if ($action === 'editFoodImage') {
+        //     $foodPublic = isset($_POST['edit_food_public']) ? 1 : 0;
+        //     $food_id = $_POST['Id'];
+
+        //     $target_dir = "uploads/";
+        //     $target_file = null;
+
+        //     if ($_FILES["edit_food_image"]["size"] > 0) {
+
+        //         $file_extension = strtolower(pathinfo($_FILES["edit_food_image"]["name"], PATHINFO_EXTENSION));
+
+        //         if (in_array($file_extension, array("jpg", "jpeg", "png"))) {
+
+        //             $target_file = $target_dir . basename($_FILES["edit_food_image"]["name"]);
+        //             move_uploaded_file($_FILES["edit_food_image"]["tmp_name"], $target_file);
+
+        //         }
+        //     }
+
+        //     $postData = [
+        //         'Id'                 => $food_id,
+        //         'action'             => $action,
+        //         'edit_food_name'     => htmlspecialchars($_POST['edit_food_name']),
+        //         'edit_description'   => htmlspecialchars($_POST['edit_description']),
+        //         'edit_cooktime'      => htmlspecialchars($_POST['edit_cooktime']),
+        //         'edit_food_position' => htmlspecialchars($_POST['edit_food_position']),
+        //         'edit_price'         => htmlspecialchars($_POST['edit_price']),
+        //         'edit_activestart'   => htmlspecialchars($_POST['edit_activestart']),
+        //         'edit_activeend'     => htmlspecialchars($_POST['edit_activeend']),
+        //         'edit_food_image'    => $target_file,
+        //         'edit_food_public'   => htmlspecialchars($foodPublic),
+        //     ];
+        //     $response = $apiRequest->postRequest($postData);
+        // }
         
         
                

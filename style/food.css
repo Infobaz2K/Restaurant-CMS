@@ -407,7 +407,7 @@ html, body {
         padding: 20px;
         border-radius: 8px;
         max-width: 1260px;
-        height: 440px;
+        height: auto;
         display: flex;
         justify-content: space-around;
         flex-direction: column;
@@ -428,21 +428,10 @@ html, body {
     .food-edit-popup-content-info {
         max-width: 100%;
         width: 100%;
-        height: auto;
+        height: 90%;
         display: flex;
         align-items: center;
-    }
-
-    .food-edit-popup-content-info-right {
-        margin-left: 50px;
-    }
-
-    .food-edit-popup-content-info-photo-active {
-        display: flex;
-    }
-
-    .food-popup-insert-time {
-        margin-left: 50px;
+        flex-direction: column;
     }
     
     .food-edit-close {
@@ -456,7 +445,6 @@ html, body {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 47.5%;
     }
     
     .food-edit-close:hover,
@@ -465,6 +453,14 @@ html, body {
         text-decoration: none;
         cursor: pointer;
     }
+    
+    .food-edit-popup-content-info-photo-active {
+        display: flex;
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    
 
     .food-edit-popup-content-info-photo-active label {
         display: flex;
@@ -485,7 +481,7 @@ html, body {
         font-size: 30px;
     }
 
-    .food-edit-popup-content-info-photo-active input[type="time"] { 
+    .food-popup-insert-time input[type="time"] { 
         width: 95px !important;
     }
 
@@ -496,4 +492,7 @@ html, body {
     .food-edit-popup-content-info-photo-active label:hover {
         background-color: #e8e8e8;
     }
-    /*  */
+
+    .food-popup-public {
+        margin-bottom: 20px;
+    }

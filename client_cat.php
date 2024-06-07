@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include 'api/post_request.php';
 include 'api/get_request.php';

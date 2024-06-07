@@ -103,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
 
-        
+
         if ($action === 'deleteMenu') {
 
             $menu_id = $postData['ID'];
@@ -210,13 +210,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
             $result = $db->editFoodImage($data);
         }
-        
-        
-
-
-        
-        
-        
     }
 }
 ?>

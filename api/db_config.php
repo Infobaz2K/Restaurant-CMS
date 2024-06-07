@@ -9,8 +9,8 @@ class dbconnect
     private $dbname = "cms";
     private $mysqli;
 
-    public function __construct() 
-    {
+    public function __construct() {
+
         $this->mysqli = new mysqli($this->dbhost, $this->dbuser, $this->dbpass, $this->dbname);
 
         if ($this->mysqli->connect_error) {
@@ -20,15 +20,15 @@ class dbconnect
 
 
 
-    public function getMysqli() 
-    {
+    public function getMysqli() {
+
         return $this->mysqli;
     }
 
 
 
-    public function loginUser($data)
-    {
+    public function loginUser($data) {
+
         $sql = "SELECT id, username, password FROM users WHERE username = ?";
         $stmt = $this->mysqli->prepare($sql);
         $stmt->bind_param("s", $data['username']);
@@ -47,8 +47,8 @@ class dbconnect
 
 
 
-    public function registerUser($data)
-    {
+    public function registerUser($data) {
+
         $hashedPassword = password_hash($data['password'], PASSWORD_DEFAULT);
         $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
         $stmt = $this->mysqli->prepare($sql);
@@ -61,10 +61,9 @@ class dbconnect
     }
 
 
-
     
-    public function getUser()
-    {
+    public function getUser() {
+
         $sql = "SELECT id, username, password
                 FROM user";
 
@@ -84,26 +83,10 @@ class dbconnect
 
 
 
-    // private function getPostUser($user_id)
-    // {
-    //     $sql = "SELECT * FROM posts WHERE user_id = ?";
-    //     $stmt = $this->mysqli->prepare($sql);
-    //     $stmt->bind_param("i", $user_id);
-    //     $stmt->execute();
-    //     $result = $stmt->get_result();
-    //     $existingData = $result->fetch_assoc();
-    //     $stmt->close();
-    
-    //     return $existingData;
-    // }
+    public function postInfo($data) {
 
-
-
-    public function postInfo($data)
-    {
         $sql = "INSERT INTO posts (businessname, regnum, address, bank, swift, bankaccnum, user_id, post_image)
-        VALUES (?,?,?,?,?,?,?,
-        ?)";
+        VALUES (?,?,?,?,?,?,?,?)";
         $stmt = $this->mysqli->prepare($sql);
         $stmt->bind_param("ssssssis", $data['businessname'],
                                       $data['regnum'], 
@@ -120,8 +103,10 @@ class dbconnect
         return true;
     }
 
-    public function editInfo($data)
-    {
+
+
+    public function editInfo($data) {
+
         $sql = "UPDATE posts SET businessname = ?, regnum = ?, address = ?, bank = ?, swift = ?, bankaccnum = ? WHERE user_id = ?";
         $stmt = $this->mysqli->prepare($sql);
         $stmt->bind_param("ssssssi", $data['businessname'],
@@ -138,8 +123,10 @@ class dbconnect
         return true;
     }
 
-    public function editInfoImage($data)
-    {
+
+
+    public function editInfoImage($data) {
+
         $sql = "UPDATE posts SET post_image = ? WHERE user_id = ?";
         $stmt = $this->mysqli->prepare($sql);
         $stmt->bind_param("si", $data['post_image'],
@@ -153,8 +140,8 @@ class dbconnect
 
 
 
-    public function getPost($user_id)
-    {
+    public function getPost($user_id) {
+
         $sql = "SELECT * FROM posts 
                 JOIN users on posts.user_id = users.id
                 WHERE user_id = ?";
@@ -175,8 +162,9 @@ class dbconnect
     }
 
 
-    public function createMenu($data)
-    {
+
+    public function createMenu($data) {
+
         $sql = "INSERT INTO menu (menu_name, public, user_id)
                 VALUES (?,?,?)";
         $stmt = $this->mysqli->prepare($sql);
@@ -188,8 +176,9 @@ class dbconnect
     }
     
 
-    public function getMenu($user_id)
-    {
+
+    public function getMenu($user_id) {
+
         $sql = "SELECT * FROM menu WHERE user_id = ?";
     
         $stmt = $this->mysqli->prepare($sql);
@@ -207,12 +196,10 @@ class dbconnect
         return $data;
     }
 
-    
 
 
+    public function deleteMenu($menu_id) {
 
-    public function deleteMenu($menu_id)
-    {
         $categoryFoodsSql = "DELETE FROM category_foods WHERE category_id IN 
                              (SELECT category_id FROM menu_categories WHERE menu_id = ?)";
         $categoryFoodsStmt = $this->mysqli->prepare($categoryFoodsSql);
@@ -261,8 +248,8 @@ class dbconnect
 
 
 
-    public function createCategory($data)
-    {    
+    public function createCategory($data) {  
+
         $sqlInsertCategory = "INSERT INTO categories (category_name, category_public, category_position, cat_image)
                               VALUES (?, ?, ?, ?)";
         $stmtInsertCategory = $this->mysqli->prepare($sqlInsertCategory);

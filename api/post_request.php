@@ -371,11 +371,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ];
             $response = $apiRequest->postRequest($postData);
         }
-        
-        
-               
-        
-
     }
 }
 ?>

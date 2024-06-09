@@ -1,5 +1,7 @@
 <?php
 
+require_once 'utils.php';
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -259,20 +261,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
             case 'editInfoImage':
     
-                $target_dir = "uploads/";
-                $target_file = null;
-    
-                if ($_FILES["post_image"]["size"] > 0) {
-    
-                    $file_extension = strtolower(pathinfo($_FILES["post_image"]["name"], PATHINFO_EXTENSION));
-    
-                    if (in_array($file_extension, array("jpg", "jpeg", "png"))) {
-    
-                        $target_file = $target_dir . basename($_FILES["post_image"]["name"]);
-                        move_uploaded_file($_FILES["post_image"]["tmp_name"], $target_file);
-    
-                    }
-                }
+                $target_file = handleFileUpload("post_image", "uploads/");
     
                 $postData = [
                     'action'                  => $action,
@@ -317,21 +306,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             case 'editCategoryImage':
 
                 $cat_id = $_POST['Id'];
-    
-                $target_dir = "uploads/";
-                $target_file = null;
-    
-                if ($_FILES["edit_cat_image"]["size"] > 0) {
-    
-                    $file_extension = strtolower(pathinfo($_FILES["edit_cat_image"]["name"], PATHINFO_EXTENSION));
-    
-                    if (in_array($file_extension, array("jpg", "jpeg", "png"))) {
-    
-                        $target_file = $target_dir . basename($_FILES["edit_cat_image"]["name"]);
-                        move_uploaded_file($_FILES["edit_cat_image"]["tmp_name"], $target_file);
-    
-                    }
-                }
+                $target_file = handleFileUpload("edit_cat_image", "uploads/");
     
                 $postData = [
                     'Id'                => $cat_id,
@@ -366,21 +341,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             case 'editFoodImage':
 
                 $food_id = $_POST['Id'];
-    
-                $target_dir = "uploads/";
-                $target_file = null;
-    
-                if ($_FILES["edit_food_image"]["size"] > 0) {
-    
-                    $file_extension = strtolower(pathinfo($_FILES["edit_food_image"]["name"], PATHINFO_EXTENSION));
-    
-                    if (in_array($file_extension, array("jpg", "jpeg", "png"))) {
-    
-                        $target_file = $target_dir . basename($_FILES["edit_food_image"]["name"]);
-                        move_uploaded_file($_FILES["edit_food_image"]["tmp_name"], $target_file);
-    
-                    }
-                }
+                $target_file = handleFileUpload("edit_food_image", "uploads/");
     
                 $postData = [
                     'Id'                 => $food_id,

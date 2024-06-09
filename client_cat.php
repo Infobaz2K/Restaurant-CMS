@@ -44,7 +44,7 @@ include 'api/get_request.php';
             <div class="main-inner-cat">
                 <?php $PublicCategory = false; ?>
                 <?php foreach ($categories as $cat): ?>
-                    <?php if (isset($cat['category_public']) && $cat['category_public'] == 1): ?>
+                    <?php if (isset($cat['category_public']) && $cat['category_public'] === 1): ?>
 
                         <div class="main-inner-cat-item">
                             <div class="main-inner-cat-item-img">

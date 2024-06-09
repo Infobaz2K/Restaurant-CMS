@@ -28,7 +28,7 @@ include 'api/get_request.php';
             <?php
             $activeMenu = null;
             foreach ($menus as $menu) {
-                if (isset($menu['public']) && $menu['public'] == 1) {
+                if (isset($menu['public']) && $menu['public'] === 1) {
                     $activeMenu = $menu;
                     break;
                 }

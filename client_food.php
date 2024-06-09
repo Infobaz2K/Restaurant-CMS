@@ -49,7 +49,7 @@ include 'api/get_request.php';
                 <?php $PublicFood = false; ?>
                 <?php foreach ($foods as $food): ?>
 
-                    <?php if (isset($food['food_public']) && $food['food_public'] == 1): ?>
+                    <?php if (isset($food['food_public']) && $food['food_public'] === 1): ?>
 
                         <div class="main-inner-cat-item">
                             <a href="client_food_info.php?food_id=<?php echo htmlspecialchars($food['id']); ?>">

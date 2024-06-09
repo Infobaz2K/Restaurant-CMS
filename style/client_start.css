@@ -70,14 +70,4 @@ html, body {
         color: white;
     }
 
-    .img-txt-image {
-        max-width: 150px;
-        max-height: 150px;
-    }
-
-    .img-txt-image img {
-        width: 100%;
-        height: 100%;
-    }
-
     

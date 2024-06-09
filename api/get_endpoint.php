@@ -11,49 +11,70 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $action = $_GET['action'];
         $jsonResponse = null;
 
-        
-        if ($action == 'getPost') {
-            $user_id = $_GET['user_id'];
-            $result = $db->getPost($user_id);  
-            $jsonResponse = json_encode($result);
-        }
+        switch ($action) {
+            
+            case 'getPost':
 
-        if ($action == 'getMenu') {
-            $user_id = $_GET['user_id'];
-            $result = $db->getMenu($user_id);  
-            $jsonResponse = json_encode($result);
-        }
+                $user_id = $_GET['user_id'];
+                $result = $db->getPost($user_id);  
+                $jsonResponse = json_encode($result);
+            
+                break;
+    
+            case 'getMenu':
 
-        if ($action == 'getCategory') {
-            $menu_id = $_GET['menu_id'];
-            $result = $db->getCategory($menu_id);
-            $jsonResponse = json_encode($result);
-        }
+                $user_id = $_GET['user_id'];
+                $result = $db->getMenu($user_id);  
+                $jsonResponse = json_encode($result);
+            
+                break;
+    
+            case 'getCategory':
 
-        if ($action == 'getFood') {
-            $cat_id = $_GET['category_id'];
-            $result = $db->getFood($cat_id);
-            $jsonResponse = json_encode($result);
-        }
+                $menu_id = $_GET['menu_id'];
+                $result = $db->getCategory($menu_id);
+                $jsonResponse = json_encode($result);
+            
+                break;
+    
+            case 'getFood':
 
-        if ($action == 'getFoodInfo') {
-            $food_id = $_GET['food_id'];
-            $result = $db->getFoodInfo($food_id);
-            $jsonResponse = json_encode($result);
-        }
+                $cat_id = $_GET['category_id'];
+                $result = $db->getFood($cat_id);
+                $jsonResponse = json_encode($result);
+            
+                break;
+    
+            case 'getFoodInfo':
 
-        if ($action == 'BackToCat') {
-            $cat_id = $_GET['category_id'];
-            $result = $db->BackToCat($cat_id);
-            $jsonResponse = json_encode($result);
-        }
+                $food_id = $_GET['food_id'];
+                $result = $db->getFoodInfo($food_id);
+                $jsonResponse = json_encode($result);
+            
+                break;
+    
+            case 'BackToCat':
 
-        if ($action == 'BackToFood') {
-            $food_id = $_GET['food_id'];
-            $result = $db->BackToFood($food_id);
-            $jsonResponse = json_encode($result);
-        }
-               
+                $cat_id = $_GET['category_id'];
+                $result = $db->BackToCat($cat_id);
+                $jsonResponse = json_encode($result);
+            
+                break;
+    
+            case 'BackToFood':
+
+                $food_id = $_GET['food_id'];
+                $result = $db->BackToFood($food_id);
+                $jsonResponse = json_encode($result);
+            
+                break;
+            
+            default:
+
+                echo "Nav atrasts get enpoint action";
+
+                break;
+        }  
 
         if ($jsonResponse !== null) {
             echo $jsonResponse;

@@ -53,7 +53,6 @@ include 'api/get_request.php';
                 <p>LOGO</p>
             </div>
             <div class="header-inner-text">
-                <a href="">Par mums</a>
                 <a class="active" href="">Ēdienkarte</a>
                 <i class="fa-sharp fa-regular fa-bag-shopping" style="color: #000000;"></i>
             </div>
@@ -83,23 +82,12 @@ include 'api/get_request.php';
                         <p><?php echo htmlspecialchars($food['description']); ?></p>
                     </div>
 
-                    <div class="main-inner-info-button">
-                        <button id="addToCartBtn">Pievienot pasūtījumam</button>
-                    </div>
-
                 <?php endforeach; ?>
             </div>
 
         </div>
     </div>
-
-    <div id="popup" class="popup"><i class="fa-regular fa-hexagon-check" style="color: #4CAF50;"></i></div>
-
-
-
     
 </body>
-
-<script src="scripts/client.js"></script>
 
 </html>

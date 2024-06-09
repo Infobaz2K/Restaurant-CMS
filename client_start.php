@@ -22,20 +22,6 @@ include 'api/get_request.php';
         <img src="img/clientbg.jpeg" alt="">
         
         <div class="img-txt">
-            <?php if (!empty($posts) && isset($posts[0])): ?>
-                <?php $post = $posts[0]; ?>
-                <div class="img-txt-image">
-                    <?php if (!empty($post['post_image'])): ?>
-                        <img src="<?php echo htmlspecialchars($post['post_image']); ?>" alt="">
-                    <?php else: ?>
-                        <p>Nav Ievietots Logo</p>
-                    <?php endif; ?>
-                </div>
-            <?php else: ?>
-                <div class="img-txt-image">
-                    <p>Nav Ievietots Logo</p>
-                </div>
-            <?php endif; ?>
 
             <h1>ĀTRI, ĒRTI, GARŠĪGI</h1>
 

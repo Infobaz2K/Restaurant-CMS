@@ -476,6 +476,8 @@ class dbconnect
         return true;
     }
 
+
+
     public function editFoodImage($data) {
         
         $sql = "UPDATE foods SET 
@@ -516,6 +518,8 @@ class dbconnect
         return $data;
     }
 
+
+
     public function BackToFood($food_id) {
         $sql = "SELECT DISTINCT foods.id AS food_id, categories.id AS category_id
                 FROM foods
@@ -536,16 +540,5 @@ class dbconnect
         return $data;
     }
     
-    
-    
-    
-    
-    
-
-
-
-
-
-
 }
 ?>

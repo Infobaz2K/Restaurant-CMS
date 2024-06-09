@@ -28,7 +28,6 @@ include 'api/get_request.php';
                 <p>LOGO</p>
             </div>
             <div class="header-inner-text">
-                <a href="">Par mums</a>
                 <a class="active" href="">Ēdienkarte</a>
                 <i class="fa-sharp fa-regular fa-bag-shopping" style="color: #000000;"></i>
             </div>

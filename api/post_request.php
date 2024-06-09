@@ -92,21 +92,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 break;
                 
             case 'postInfo':
-    
-                $target_dir = "uploads/";
-                $target_file = null;
-    
-                if ($_FILES["post_image"]["size"] > 0) {
-    
-                    $file_extension = strtolower(pathinfo($_FILES["post_image"]["name"], PATHINFO_EXTENSION));
-    
-                    if (in_array($file_extension, array("jpg", "jpeg", "png"))) {
-    
-                        $target_file = $target_dir . basename($_FILES["post_image"]["name"]);
-                        move_uploaded_file($_FILES["post_image"]["tmp_name"], $target_file);
-    
-                    }
-                }
+
+                $target_file = handleFileUpload("post_image", "uploads/");
     
                 $postData = [
                     'action'                  => $action,
@@ -142,21 +129,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $categoryPublic = isset($_POST['category_public']) ? 1 : 0;
                 $menu_id = $_GET['menu_id'];
-    
-                $target_dir = "uploads/";
-                $target_file = null;
-    
-                if ($_FILES["cat_image"]["size"] > 0) {
-    
-                    $file_extension = strtolower(pathinfo($_FILES["cat_image"]["name"], PATHINFO_EXTENSION));
-    
-                    if (in_array($file_extension, array("jpg", "jpeg", "png"))) {
-    
-                        $target_file = $target_dir . basename($_FILES["cat_image"]["name"]);
-                        move_uploaded_file($_FILES["cat_image"]["tmp_name"], $target_file);
-    
-                    }
-                }
+                $target_file = handleFileUpload("cat_image", "uploads/");
                 
                 $postData = [
                     'action'                => $action,
@@ -174,21 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                 $foodPublic = isset($_POST['food_public']) ? 1 : 0;
                 $cat_id = $_GET['category_id'];
-    
-                $target_dir = "uploads/";
-                $target_file = null;
-    
-                if ($_FILES["food_image"]["size"] > 0) {
-    
-                    $file_extension = strtolower(pathinfo($_FILES["food_image"]["name"], PATHINFO_EXTENSION));
-    
-                    if (in_array($file_extension, array("jpg", "jpeg", "png"))) {
-    
-                        $target_file = $target_dir . basename($_FILES["food_image"]["name"]);
-                        move_uploaded_file($_FILES["food_image"]["tmp_name"], $target_file);
-    
-                    }
-                }
+                $target_file = handleFileUpload("food_image", "uploads/");
                 
                 $postData = [
                     'action'                => $action,

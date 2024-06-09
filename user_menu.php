@@ -55,11 +55,6 @@ if (!isset($_SESSION['user_id'])) {
                         <p>Nav izveidotas ēdienkartes</p>
                     <?php else: ?> 
                         <?php foreach ($menus as $menu): ?>
-                                <?php
-                                // echo '<pre>';
-                                // print_r($menu);
-                                // echo '</pre>';
-                                ?>
                                 <div class="menu-item">
                                     <div class="menu-item-public">
                                         <label class="switch">
@@ -89,7 +84,6 @@ if (!isset($_SESSION['user_id'])) {
                                 <div id="menu-edit-popup-<?php echo $menu['id']; ?>" class="menu-edit-popup">
                                     <form method="POST">
                                         <div class="menu-edit-popup-content">
-                                            <?php //echo $menu['id']; ?>
                                             <div class="menu-edit-popup-content-head">
                                                 <h1>Izmaini ēdienkarti</h1>
                                                 <span class="menu-edit-close" onclick="closeEditMenuPopup(<?php echo $menu['id']; ?>)">&times;</span>

@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 include 'api/post_request.php';
@@ -9,9 +10,6 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// echo "<pre>";
-// print_r($all);
-// echo "</pre>";
 ?>
 
 <!DOCTYPE html>

@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 include 'api/post_request.php';
@@ -8,8 +9,6 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
-
-
 
 ?>
 

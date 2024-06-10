@@ -135,32 +135,37 @@ if (!isset($_SESSION['user_id'])) {
                                     </div>
 
                                     <div class="food-edit-popup-content-info">
-                                        <form id="foodForm-<?php echo $food['id']; ?>" method="POST">
+                                        <form id="foodForm-<?php echo $food['id']; ?>" method="POST" onsubmit="return validateFormFoodEdit(<?php echo $food['id']; ?>)">
                                             <div>
                                                 <p>Produkta nosaukums</p>
                                                 <input type="text" id="edit_food_name-<?php echo $food['id']; ?>" name="edit_food_name" value="<?php echo htmlspecialchars($food['food_name']); ?>">
+                                                <p id="edit_food_name-error-<?php echo $food['id']; ?>" class="error-message"></p>
                                             </div>
 
                                             <div>
                                                 <p>Ēdiena apraksts</p>
                                                 <input type="text" id="edit_description-<?php echo $food['id']; ?>" name="edit_description" value="<?php echo htmlspecialchars($food['description']); ?>">
+                                                <p id="edit_description-error-<?php echo $food['id']; ?>" class="error-message"></p>
                                             </div>
 
                                             <div>
                                                 <p>Pagatavošanas laiks</p>
                                                 <input type="text" id="edit_cooktime-<?php echo $food['id']; ?>" name="edit_cooktime" value="<?php echo htmlspecialchars($food['cooktime']); ?>">
+                                                <p id="edit_cooktime-error-<?php echo $food['id']; ?>" class="error-message"></p>
                                             </div>
 
                                             <div>
                                                 <p>Pozīcija</p>
                                                 <input type="text" id="edit_food_position-<?php echo $food['id']; ?>" name="edit_food_position" value="<?php echo htmlspecialchars($food['food_position']); ?>">
+                                                <p id="edit_food_position-error-<?php echo $food['id']; ?>" class="error-message"></p>
                                             </div>
 
                                             <div>
                                                 <p>Cena</p>
                                                 <input type="text" class="edit_price" name="edit_price" value="<?php echo htmlspecialchars($food['price']); ?>">
+                                                <p id="edit_price-error-<?php echo $food['id']; ?>" class="error-message"></p>
                                             </div>
-                                        
+
                                             <div class="food-popup-public">
                                                 <p>Publicēts</p>
                                                 <label class="switch">
@@ -169,7 +174,7 @@ if (!isset($_SESSION['user_id'])) {
                                                     <span class="slider"></span>
                                                 </label>
                                             </div>
-                                            
+
                                             <input type="hidden" name="action" value="editFood">
                                             <input type="hidden" name="Id" value="<?php echo $food['id']; ?>">
                                         </form>
@@ -201,7 +206,7 @@ if (!isset($_SESSION['user_id'])) {
 
                 <p type="button" class="food-add" id="showFoodInfo">Pievienot jaunu produktu <i class="fa-solid fa-circle-plus fa-lg" style="color: #000000;"></i></p>
             
-                <form method="POST" enctype="multipart/form-data">
+                <form method="POST" enctype="multipart/form-data" onsubmit="return validateFormFoodInsert()">
 
                     <div class="food-info-insert hidden">
                         <h2>Pievienot jaunu produktu</h2>
@@ -211,16 +216,19 @@ if (!isset($_SESSION['user_id'])) {
                                 <div>
                                     <p>Produkta nosaukums</p>
                                     <input type="text" id ="food_name" name="food_name" value="">
+                                    <p id="food_name-error" class="error-message"></p>
                                 </div>
 
                                 <div>
                                     <p>Ēdiena apraksts</p>
                                     <input type="text" id ="description" name="description" value="">
+                                    <p id="description-error" class="error-message"></p>
                                 </div>
 
                                 <div>
                                     <p>Pagatavošanas laiks</p>
                                     <input type="text" id ="cooktime" name="cooktime" value="">
+                                    <p id="cooktime-error" class="error-message"></p>
                                 </div>
                             </div>
 
@@ -228,11 +236,13 @@ if (!isset($_SESSION['user_id'])) {
                                 <div>
                                     <p>Pozīcija</p>
                                     <input type="text" id ="food_position" name="food_position" value="">
+                                    <p id="food_position-error" class="error-message"></p>
                                 </div>
 
                                 <div>
                                     <p>Cena</p>
                                     <input type="text" id ="price" name="price" value="">
+                                    <p id="price-error" class="error-message"></p>
                                 </div>
 
                                 <div class="food-info-insert-mid-photo-active">
@@ -243,6 +253,7 @@ if (!isset($_SESSION['user_id'])) {
                                             <i class="fa-regular fa-cloud-arrow-up" style="color: #5e5e5e;"></i>
                                         </label>
                                         <span id="file-name">Izvēlies bildi</span>
+                                        <p id="food_image-error" class="error-message"></p>
                                     </div>
                                 </div>
                             </div>

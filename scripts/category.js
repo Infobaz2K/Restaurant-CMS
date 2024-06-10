@@ -105,8 +105,42 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //
 
-function validateFormCategoryEdit(formId) {
+function validateFormCategoryInsert() {
 
+    var catName = document.getElementById("category_name").value;
+    var catPos = document.getElementById("category_position").value;
+    var image = document.getElementById("cat_image").value;
+
+    var catNameError = document.getElementById("category_name-error");
+    var catPosError = document.getElementById("category_position-error");
+    var imageError = document.getElementById("image-error");
+
+    catNameError.innerHTML = "";
+    catPosError.innerHTML = "";
+    imageError.innerHTML = "";
+
+    var isValid = true;
+
+    if (catName.trim() === "") {
+        catNameError.innerHTML = "Lūdzu ievadiet kategorijas nosaukumu";
+        isValid = false;
+    }
+
+    if (catPos.trim() === "") {
+        catPosError.innerHTML = "Lūdzu ievadiet kategorijas pozīciju";
+        isValid = false;
+    }
+
+    if (image === "") {
+        imageError.innerHTML = "Lūdzu izvēlieties uzņēmuma logotipu";
+        isValid = false;
+    }
+
+    return isValid;
+}
+
+function validateFormCategoryEdit(formId) {
+    
     var catName = document.getElementById("edit_cat_name-" + formId).value.trim();
     var catPos = document.getElementById("edit_cat_pos-" + formId).value.trim();
 
@@ -116,23 +150,26 @@ function validateFormCategoryEdit(formId) {
     catNameError.textContent = "";
     catPosError.textContent = "";
 
+    var isValid = true;
+
     if (catName === "") {
         catNameError.textContent = "Lūdzu ievadiet kategorijas nosaukumu";
+        isValid = false;
     }
 
     if (catPos === "") {
         catPosError.textContent = "Lūdzu ievadiet kategorijas pozīciju";
+        isValid = false;
     }
 
-    if (catName === "" || catPos === "") {
-        return false;
-    }
+    var saveButton = document.getElementById("editCategoryButton-" + formId);
+    saveButton.disabled = !isValid;
 
-    return true;
+    return isValid;
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    
+
     var forms = document.querySelectorAll('form[id^="categoryForm"]');
 
     forms.forEach(function(form) {
@@ -156,4 +193,5 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
 

@@ -161,7 +161,7 @@ html, body {
 
     .food-info-insert {
         background-color: #FBFBFB;
-        height: 400px;
+        height: auto;
         padding: 20px;
         display: flex;
         flex-direction: column;
@@ -212,6 +212,10 @@ html, body {
 
     .orangebtn:hover {
         border: 2px solid black;
+    }
+
+    .orangebtn:disabled {
+        color: black;
     }
 
     input[type="text"] {
@@ -485,4 +489,9 @@ html, body {
 
     .food-popup-public {
         margin-bottom: 20px;
+    }
+
+    .error-message {
+        color: red;
+        font-size: 14px;
     }

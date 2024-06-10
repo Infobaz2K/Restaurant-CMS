@@ -336,6 +336,10 @@ html, body {
         border: 2px solid black;
     }
 
+    .orangebtn:disabled {
+        color: black;
+    }
+
     input[type="text"] {
         font-size: 20px;
         font-weight: 500;
@@ -441,3 +445,4 @@ html, body {
         color: red;
         font-size: 14px;
     }
+    

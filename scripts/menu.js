@@ -52,18 +52,18 @@ function closeEditMenuPopup(menu_id) {
 
 function validateFormMenuInsert() {
 
-    var menu_name = document.getElementById("menu_name").value;
+    var menuName = document.getElementById("menu_name").value;
 
-    var menu_name_error = document.getElementById("menu_name-error");
+    var menuNameError = document.getElementById("menu_name-error");
 
 
-    menu_name_error.innerHTML = "";
+    menuNameError.innerHTML = "";
 
 
     var isValid = true;
 
-    if (menu_name.trim() === "") {
-        menu_name_error.innerHTML = "Lūdzu ievadiet ēdienkartes nosaukumu";
+    if (menuName.trim() === "") {
+        menuNameError.innerHTML = "Lūdzu ievadiet ēdienkartes nosaukumu";
         isValid = false;
     }
 
@@ -72,16 +72,16 @@ function validateFormMenuInsert() {
 
 function validateFormMenuEdit() {
 
-    var edit_menu_name = document.getElementById("edit_menu_name").value;
+    var menuName = document.getElementById("edit_menu_name").value;
 
-    var edit_menu_name_error = document.getElementById("edit_menu_name-error");
+    var menuNameError = document.getElementById("edit_menu_name-error");
 
-    edit_menu_name_error.innerHTML = "";
+    menuNameError.innerHTML = "";
 
     var isValid = true;
 
-    if (edit_menu_name.trim() === "") {
-        edit_menu_name_error.innerHTML = "Lūdzu ievadiet uzņēmuma nosaukumu";
+    if (menuName.trim() === "") {
+        menuNameError.innerHTML = "Lūdzu ievadiet uzņēmuma nosaukumu";
         isValid = false;
     }
 

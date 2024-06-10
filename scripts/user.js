@@ -104,7 +104,7 @@ function validateFormInfoInsert() {
     }
 
     if (image === "") {
-        imageError.innerHTML = "Lūdzu izvēlieties uzņēmuma logotipu";
+        imageError.innerHTML = "Lūdzu izvēlieties uzņēmuma logo";
         isValid = false;
     }
 

@@ -108,7 +108,7 @@ if (!isset($_SESSION['user_id'])) {
                                     </div>
 
                                     <div class="category-edit-popup-content-info">
-                                        
+
                                         <form id="categoryForm-<?php echo $cat['id']; ?>" method="POST" onsubmit="return validateFormCategoryEdit(<?php echo $cat['id']; ?>)">
                                             <div>
                                                 <p>Kategorijas nosaukums</p>
@@ -162,7 +162,7 @@ if (!isset($_SESSION['user_id'])) {
 
                 <p type="button" class="category-add" id="showCategoryInfo">Pievienot kategoriju <i class="fa-solid fa-circle-plus fa-lg" style="color: #000000;"></i></p>
             
-                <form method="POST" enctype="multipart/form-data">
+                <form method="POST" enctype="multipart/form-data" onsubmit="return validateFormCategoryInsert()">
 
                     <div class="category-info-insert hidden">
                         <h2>Pievienot jaunu kategoriju</h2>
@@ -173,11 +173,13 @@ if (!isset($_SESSION['user_id'])) {
                                 <div>
                                     <p>Kategorijas nosaukums</p>
                                     <input type="text" id ="category_name" name="category_name" value="">
+                                    <p id="category_name-error" class="error-message"></p>
                                 </div>
 
                                 <div>
                                     <p>Pozīcija</p>
                                     <input type="text" id ="category_position" name="category_position" value="">
+                                    <p id="category_position-error" class="error-message"></p>
                                 </div>
                                 
                                 <div>
@@ -197,6 +199,7 @@ if (!isset($_SESSION['user_id'])) {
                                     <i class="fa-regular fa-cloud-arrow-up" style="color: #5e5e5e;"></i>
                                 </label>
                                 <span id="file-name">Izvēlies bildi</span>
+                                <p id="image-error" class="error-message"></p>
                             </div>
                         </div>
 

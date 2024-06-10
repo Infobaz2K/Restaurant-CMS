@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2024 at 01:52 PM
+-- Generation Time: Jun 10, 2024 at 04:34 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,13 +40,10 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `category_name`, `category_public`, `category_position`, `cat_image`) VALUES
-(135, 'PICAS', 1, 'PICAS', 'uploads/pizza.jpg'),
-(136, 'BURGERI', 1, 'BURGERI', 'uploads/burger.jpg'),
-(137, 'ZUPAS', 1, 'ZUPAS', 'uploads/pumkin soup.jpeg'),
-(138, 'SALATI', 1, 'SALATI', ''),
-(143, 'PICAS', 1, '2', 'uploads/pizza.jpg'),
-(144, 'BROKASTIS', 1, '1', 'uploads/burger.jpg'),
-(145, '', 1, '', '');
+(163, 'BURGERI', 1, '1', 'uploads/burger.jpg'),
+(164, 'PICAS', 1, '2', 'uploads/pizza.jpg'),
+(169, 'SALATI', 1, '5', 'uploads/salad.jpg'),
+(176, 'ZUPAS', 1, '3', 'uploads/pumkin soup.jpeg');
 
 -- --------------------------------------------------------
 
@@ -64,8 +61,8 @@ CREATE TABLE `category_foods` (
 --
 
 INSERT INTO `category_foods` (`food_id`, `category_id`) VALUES
-(151, 135),
-(152, 135);
+(158, 163),
+(160, 163);
 
 -- --------------------------------------------------------
 
@@ -91,8 +88,8 @@ CREATE TABLE `foods` (
 --
 
 INSERT INTO `foods` (`id`, `food_name`, `food_public`, `description`, `cooktime`, `food_position`, `price`, `activestart`, `activeend`, `food_image`) VALUES
-(151, 'SIERA BURGERS', 1, 'Sēklu maize, kausēts siers, sīpoli, marinets gurķis, liellopa gaļa, kūpināts bekonsSēklu maize, kausēts siers, sīpoli, marinets gurķis, liellopa gaļa, kūpināts bekons', '15 MIN', '1', 12.32, '12:32:00.000000', '04:34:00.000000', 'uploads/burger.jpg'),
-(152, 'SIERA PICA', 1, 'Pasta staple, vistas fileja, burkāni, baltās pupiņas, paprika, kaltēti tomāti, zilais siers, saldais krējums, sīpoli', '30 MIN', '2', 22.00, '23:33:00.000000', '04:44:00.000000', 'uploads/pizza.jpg');
+(158, 'SIERA BURGERS', 1, 'Pasta staple, vistas fileja, burkāni, baltās pupiņas, paprika, kaltēti tomāti, zilais siers, saldais krējums, sīpoli', '15 MIN', '1', 12.00, '10:45:00.000000', '05:50:00.000000', 'uploads/burger.jpg'),
+(160, 'SIERA PICA', 1, 'SIERS, MAIZE, MERCESIERS, MAIZE, MERCESIERS, MAIZE, MERCESIERS, MAIZE, MERCESIERS, MAIZE, MERCE', '10 MIN', '2', 6.99, '23:38:00.000000', '23:41:00.000000', 'uploads/pizza.jpg');
 
 -- --------------------------------------------------------
 
@@ -112,9 +109,7 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id`, `menu_name`, `public`, `user_id`) VALUES
-(101, 'BRIVDIENU PIEDAVAJUMS', 1, 3),
-(105, 'FGHDGFDDFG', 0, 3),
-(106, '', 1, 9);
+(108, 'BRIVDIENU PIEDAVAJUMS', 1, 13);
 
 -- --------------------------------------------------------
 
@@ -132,13 +127,10 @@ CREATE TABLE `menu_categories` (
 --
 
 INSERT INTO `menu_categories` (`menu_id`, `category_id`) VALUES
-(101, 135),
-(101, 136),
-(101, 137),
-(101, 138),
-(105, 143),
-(105, 144),
-(106, 145);
+(108, 163),
+(108, 164),
+(108, 169),
+(108, 176);
 
 -- --------------------------------------------------------
 
@@ -154,7 +146,6 @@ CREATE TABLE `posts` (
   `bank` varchar(255) DEFAULT NULL,
   `swift` varchar(255) DEFAULT NULL,
   `bankaccnum` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `user_id` int(11) NOT NULL,
   `post_image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -163,9 +154,8 @@ CREATE TABLE `posts` (
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`id`, `businessname`, `regnum`, `address`, `bank`, `swift`, `bankaccnum`, `created_at`, `user_id`, `post_image`) VALUES
-(20, 'SIA PICA', 'LV123456789', 'Rigas iela 55', 'SWED BANK', 'LV HABA 12345', 'LV11HABA4332423432', '2024-05-27 11:06:50', 3, 'uploads/logo.png'),
-(22, 'SIA STROPS', 'SIA STROPS', 'SIA STROPS', 'SIA STROPS', 'SIA STROPS', 'SIA STROPS', '2024-06-05 06:47:20', 9, '');
+INSERT INTO `posts` (`id`, `businessname`, `regnum`, `address`, `bank`, `swift`, `bankaccnum`, `user_id`, `post_image`) VALUES
+(23, 'SIA PICA', 'LV123456789', 'Rigas iela 55', 'SWED BANK', 'LV HABA 12345', 'LV11HABA4332423432', 13, 'uploads/logo.png');
 
 -- --------------------------------------------------------
 
@@ -184,8 +174,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`) VALUES
-(3, 'user', '$2y$10$eWiVwpAZH08qbaHMVjDuJuXauNQGcVoWeEGt5ytT9O9JvelU6JXPS'),
-(9, 'john', '$2y$10$sUzQjbh3FLBVf2IIpWbRTuacPAm/hWhEbVCzTNMPqxX6.Jzy.gx2K');
+(13, 'user', '$2y$10$i0xbjErM.AJMdRZdMGXFQu3tndb8/I4D6j2d6XNcRT0FrRlQFAzl.'),
+(18, 'john', '$2y$10$7ZfkzG4YeK3qgMctQQ6VWOM8ZlCC7XExCMN7v4RQvRbxgmLjnt9Vq');
 
 --
 -- Indexes for dumped tables
@@ -247,31 +237,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=184;
 
 --
 -- AUTO_INCREMENT for table `foods`
 --
 ALTER TABLE `foods`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
 
 --
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Constraints for dumped tables

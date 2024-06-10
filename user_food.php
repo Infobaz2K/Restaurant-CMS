@@ -87,7 +87,6 @@ if (!isset($_SESSION['user_id'])) {
                                             <th>Pagatavošana</th>
                                             <th>Publicēts</th>
                                             <th>Pozīcija</th>
-                                            <th>Aktīvs</th>
                                             <th>Cena</th>
                                             <th></th>
                                         </tr>
@@ -102,15 +101,6 @@ if (!isset($_SESSION['user_id'])) {
                                                 </label>
                                             </td>
                                             <td><?php echo htmlspecialchars($food['food_position']); ?></td>
-                                            <td>
-                                                <?php
-                                                    echo "<p>";
-                                                    echo substr(htmlspecialchars($food['activestart']), 0, 5);
-                                                    echo " - ";
-                                                    echo substr(htmlspecialchars($food['activeend']), 0, 5);
-                                                    echo "</p>"; 
-                                                ?>
-                                            </td>
                                             <td><p><?php echo htmlspecialchars($food['price']); ?></p></td>
                                             <td>
                                                 <div class="food-item-edit-delete">
@@ -121,8 +111,6 @@ if (!isset($_SESSION['user_id'])) {
                                                         data-food-cook="<?php echo $food['cooktime']; ?>" 
                                                         data-food-position="<?php echo $food['food_position']; ?>"
                                                         data-food-price="<?php echo $food['price']; ?>"
-                                                        data-food-activestart="<?php echo $food['activestart']; ?>"
-                                                        data-food-activeend="<?php echo $food['activeend']; ?>"
                                                         >
                                                         Labot
                                                     </button>
@@ -171,12 +159,6 @@ if (!isset($_SESSION['user_id'])) {
                                             <div>
                                                 <p>Cena</p>
                                                 <input type="text" class="edit_price" name="edit_price" value="<?php echo htmlspecialchars($food['price']); ?>">
-                                            </div>
-
-                                            <div class="food-popup-insert-time">
-                                                <p>Aktīvs</p>
-                                                <input type="time" id="edit_activestart-<?php echo $food['id']; ?>" name="edit_activestart" value="<?php echo substr(htmlspecialchars($food['activestart']), 0, 5); ?>">
-                                                <input type="time" id="edit_activeend-<?php echo $food['id']; ?>" name="edit_activeend" value="<?php echo substr(htmlspecialchars($food['activeend']), 0, 5); ?>">
                                             </div>
                                         
                                             <div class="food-popup-public">
@@ -261,12 +243,6 @@ if (!isset($_SESSION['user_id'])) {
                                             <i class="fa-regular fa-cloud-arrow-up" style="color: #5e5e5e;"></i>
                                         </label>
                                         <span id="file-name">Izvēlies bildi</span>
-                                    </div>
-
-                                    <div class="food-insert-time">
-                                        <p>Aktīvs</p>
-                                        <input type="time" id="activestart" name="activestart" value="">
-                                        <input type="time" id="activeend" name="activeend" value="">
                                     </div>
                                 </div>
                             </div>

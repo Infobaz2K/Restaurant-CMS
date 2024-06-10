@@ -45,6 +45,4 @@ include 'api/get_request.php';
     
 </body>
 
-<script src="scripts/client.js"></script>
-
 </html>

@@ -253,7 +253,7 @@ class dbconnect
         $sqlInsertCategory = "INSERT INTO categories (category_name, category_public, category_position, cat_image)
                               VALUES (?, ?, ?, ?)";
         $stmtInsertCategory = $this->mysqli->prepare($sqlInsertCategory);
-        $stmtInsertCategory->bind_param("siss", $data['category_name'], $data['category_public'], $data['category_position'], $data['cat_image']);
+        $stmtInsertCategory->bind_param("siis", $data['category_name'], $data['category_public'], $data['category_position'], $data['cat_image']);
         $stmtInsertCategory->execute();
         $categoryId = $stmtInsertCategory->insert_id;
         $stmtInsertCategory->close();
@@ -294,7 +294,7 @@ class dbconnect
 
         $stmt = $this->mysqli->prepare($sql);
     
-        $stmt->bind_param("sisi", $data['edit_cat_name'], $data['edit_cat_public'], $data['edit_cat_pos'], $data['Id']);
+        $stmt->bind_param("siii", $data['edit_cat_name'], $data['edit_cat_public'], $data['edit_cat_pos'], $data['Id']);
         $stmt->execute();
         $stmt->close();
     
@@ -392,20 +392,16 @@ class dbconnect
                                        cooktime, 
                                        food_position, 
                                        price, 
-                                       activestart, 
-                                       activeend, 
                                        food_image)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    VALUES (?, ?, ?, ?, ?, ?, ?)";
         $foodStmt = $this->mysqli->prepare($foodsql);
-        $foodStmt->bind_param("sisssdsss", 
+        $foodStmt->bind_param("sissids", 
                                         $data['food_name'], 
                                         $data['food_public'], 
                                         $data['description'], 
                                         $data['cooktime'], 
                                         $data['food_position'], 
                                         $data['price'], 
-                                        $data['activestart'], 
-                                        $data['activeend'], 
                                         $data['food_image']
                             );
         $foodStmt->execute();
@@ -452,22 +448,18 @@ class dbconnect
                     description = ?,
                     cooktime = ?,
                     food_position = ?,
-                    price = ?,
-                    activestart = ?,
-                    activeend = ?
+                    price = ?
                 WHERE id = ?";
 
         $stmt = $this->mysqli->prepare($sql);
     
-        $stmt->bind_param("sisssdssi",
+        $stmt->bind_param("sissidi",
                                   $data['edit_food_name'], 
                                   $data['edit_food_public'], 
                                   $data['edit_description'],
                                   $data['edit_cooktime'],
                                   $data['edit_food_position'],
                                   $data['edit_price'],
-                                  $data['edit_activestart'],
-                                  $data['edit_activeend'], 
                                   $data['Id']
                         );
         $stmt->execute();

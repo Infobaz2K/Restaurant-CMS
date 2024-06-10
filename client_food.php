@@ -4,7 +4,9 @@ session_start();
 include 'api/post_request.php';
 include 'api/get_request.php';
 
-
+usort($foods, function($a, $b) {
+    return $a['food_position'] - $b['food_position'];
+});
 ?>
 
 <!DOCTYPE html>
@@ -82,11 +84,6 @@ include 'api/get_request.php';
         </div>
     </div>
 
-
-
-    
 </body>
-
-<script src="scripts/client.js"></script>
 
 </html>

@@ -183,10 +183,6 @@ html, body {
         display: flex;
     }
 
-    .food-insert-time {
-        margin-left: 50px;
-    }
-
     .add-save-food {
         display: flex;
         justify-content: space-between;
@@ -218,7 +214,7 @@ html, body {
         border: 2px solid black;
     }
 
-    input[type="text"], input[type="time"] {
+    input[type="text"] {
         font-size: 20px;
         font-weight: 500;
         font-family: inherit;
@@ -254,17 +250,11 @@ html, body {
         font-size: 30px;
     }
 
-    .food-info-insert-mid-photo-active input[type="time"] { 
-        width: 95px !important;
-    }
-
-    input[type="time"]:hover,
     .food-info-insert-mid-photo-active label:hover {
         cursor: pointer;
     }
        
     input[type="text"]:hover,
-    input[type="time"]:hover,
     .food-info-insert-mid-photo-active label:hover {
         background-color: #e8e8e8;
     }
@@ -483,10 +473,6 @@ html, body {
 
     .food-edit-popup-content-info-photo-active label i{
         font-size: 30px;
-    }
-
-    .food-popup-insert-time input[type="time"] { 
-        width: 95px !important;
     }
 
     .food-edit-popup-content-info-photo-active label:hover {

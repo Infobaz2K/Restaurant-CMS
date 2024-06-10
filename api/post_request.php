@@ -152,8 +152,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     'cooktime'              => htmlspecialchars($_POST['cooktime']),
                     'food_position'         => htmlspecialchars($_POST['food_position']),
                     'price'                 => htmlspecialchars($_POST['price']),
-                    'activestart'           => htmlspecialchars($_POST['activestart']),
-                    'activeend'             => htmlspecialchars($_POST['activeend']),
                     'food_image'            => $target_file,
                     'cat_id'                => $cat_id,
                 ];
@@ -284,8 +282,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     'edit_cooktime'      => htmlspecialchars($_POST['edit_cooktime']),
                     'edit_food_position' => htmlspecialchars($_POST['edit_food_position']),
                     'edit_price'         => htmlspecialchars($_POST['edit_price']),
-                    'edit_activestart'   => htmlspecialchars($_POST['edit_activestart']),
-                    'edit_activeend'     => htmlspecialchars($_POST['edit_activeend']),
                     'edit_food_public'   => htmlspecialchars($foodPublic),
                 ];
                 $response = $apiRequest->postRequest($postData);

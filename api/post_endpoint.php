@@ -141,8 +141,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     !isset($postData['cooktime']) || empty($postData['cooktime']) ||
                     !isset($postData['food_position']) || empty($postData['food_position']) ||
                     !isset($postData['price']) || empty($postData['price']) ||
-                    !isset($postData['activestart']) || empty($postData['activestart']) ||
-                    !isset($postData['activeend']) || empty($postData['activeend']) ||
                     !isset($postData['food_image']) || empty($postData['food_image']) ||
                     !isset($postData['cat_id']) || empty($postData['cat_id'])
                 ) {
@@ -156,8 +154,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         'cooktime'        => htmlspecialchars($postData['cooktime']),
                         'food_position'   => htmlspecialchars($postData['food_position']),
                         'price'           => htmlspecialchars($postData['price']),
-                        'activestart'     => htmlspecialchars($postData['activestart']),
-                        'activeend'       => htmlspecialchars($postData['activeend']),
                         'food_image'      => htmlspecialchars($postData['food_image']),
                         'cat_id'          => htmlspecialchars($postData['cat_id']),
                     ];
@@ -320,9 +316,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     !isset($postData['edit_description']) || empty($postData['edit_description']) ||
                     !isset($postData['edit_cooktime']) || empty($postData['edit_cooktime']) ||
                     !isset($postData['edit_food_position']) || empty($postData['edit_food_position']) ||
-                    !isset($postData['edit_price']) || empty($postData['edit_price']) ||
-                    !isset($postData['edit_activestart']) || empty($postData['edit_activestart']) ||
-                    !isset($postData['edit_activeend']) || empty($postData['edit_activeend'])
+                    !isset($postData['edit_price']) || empty($postData['edit_price'])
                 ) {
 
                 } else {
@@ -335,8 +329,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         'edit_cooktime'      => htmlspecialchars($postData['edit_cooktime']),
                         'edit_food_position' => htmlspecialchars($postData['edit_food_position']),
                         'edit_price'         => htmlspecialchars($postData['edit_price']),
-                        'edit_activestart'   => htmlspecialchars($postData['edit_activestart']),
-                        'edit_activeend'     => htmlspecialchars($postData['edit_activeend']),
                     ];
             
                     $result = $db->editFood($data);

@@ -4,6 +4,10 @@ session_start();
 include 'api/post_request.php';
 include 'api/get_request.php';
 
+usort($categories, function($a, $b) {
+    return $a['category_position'] - $b['category_position'];
+});
+
 ?>
 
 <!DOCTYPE html>
@@ -70,11 +74,6 @@ include 'api/get_request.php';
         </div>
     </div>
 
-
-
-    
 </body>
-
-<script src="scripts/client.js"></script>
 
 </html>

@@ -228,6 +228,11 @@ html, body {
         background-color: #e8e8e8;
     }
 
+    .error-message {
+        color: red;
+        font-size: 14px;
+    }
+
 
       
 

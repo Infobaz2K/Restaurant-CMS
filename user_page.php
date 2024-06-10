@@ -49,23 +49,29 @@ echo "Session User ID: " . $_SESSION['user_id']; // Debugging output
                 <?php $found = false; ?>
                 <?php foreach ($posts as $post): ?>
                         <div class="post-info">
-                            <form method="POST">
+                            <form method="POST" onsubmit="return validateFormInfoEdit()">
                                 <div class="post-info-col">
                                     <div class="post-info-col-1">
                                         <p>Uzņēmuma nosaukums:</p>
                                         <input type="text" id="businessname" name="businessname" value="<?php echo htmlspecialchars($post['businessname'] ?? ''); ?>">
+                                        <p id="businessname-error" class="error-message"></p>
                                         <p>Reģistrācijas numurs:</p>
                                         <input type="text" id="regnum" name="regnum" value="<?php echo htmlspecialchars($post['regnum'] ?? ''); ?>">
+                                        <p id="regnum-error" class="error-message"></p>
                                         <p>Juridiskā adrese:</p>
                                         <input type="text" id="address" name="address" value="<?php echo htmlspecialchars($post['address'] ?? ''); ?>">
+                                        <p id="address-error" class="error-message"></p>
                                     </div>
                                     <div class="post-info-col-2">
                                         <p>Banka:</p>
                                         <input type="text" id="bank" name="bank" value="<?php echo htmlspecialchars($post['bank'] ?? ''); ?>">
+                                        <p id="bank-error" class="error-message"></p>
                                         <p>SWIFT:</p>
                                         <input type="text" id="swift" name="swift" value="<?php echo htmlspecialchars($post['swift'] ?? ''); ?>">
+                                        <p id="swift-error" class="error-message"></p>
                                         <p>Konta numurs:</p>
                                         <input type="text" id="bankaccnum" name="bankaccnum" value="<?php echo htmlspecialchars($post['bankaccnum'] ?? ''); ?>">
+                                        <p id="bankaccnum-error" class="error-message"></p>
                                     </div>
                                 </div>
 
@@ -100,23 +106,29 @@ echo "Session User ID: " . $_SESSION['user_id']; // Debugging output
 
                 <?php if (!$found): ?>
                     <div class="post-info">
-                        <form method="POST" enctype="multipart/form-data">
+                        <form method="POST" enctype="multipart/form-data" onsubmit="return validateFormInfoInsert()">
                             <div class="post-info-col">
                                 <div class="post-info-col-1">
                                     <p>Uzņēmuma nosaukums:</p>
                                     <input type="text" id="businessname" name="businessname" value="">
+                                    <p id="businessname-error" class="error-message"></p>
                                     <p>Reģistrācijas numurs:</p>
                                     <input type="text" id="regnum" name="regnum" value="">
+                                    <p id="regnum-error" class="error-message"></p>
                                     <p>Juridiskā adrese:</p>
                                     <input type="text" id="address" name="address" value="">
+                                    <p id="address-error" class="error-message"></p>
                                 </div>
                                 <div class="post-info-col-2">
                                     <p>Banka:</p>
                                     <input type="text" id="bank" name="bank" value="">
+                                    <p id="bank-error" class="error-message"></p>
                                     <p>SWIFT:</p>
                                     <input type="text" id="swift" name="swift" value="">
+                                    <p id="swift-error" class="error-message"></p>
                                     <p>Konta numurs:</p>
                                     <input type="text" id="bankaccnum" name="bankaccnum" value="">
+                                    <p id="bankaccnum-error" class="error-message"></p>
                                 </div>
                             </div>
                             <div class="post-info-img">
@@ -126,6 +138,7 @@ echo "Session User ID: " . $_SESSION['user_id']; // Debugging output
                                     <i class="fa-regular fa-cloud-arrow-up" style="color: #5e5e5e;"></i>
                                 </label>
                                 <span id="file-name">Izvēlies bildi</span>
+                                <p id="image-error" class="error-message"></p>
                             </div>
                             <input type="hidden" name="action" value="postInfo">
                             <button type="submit">Pievienot <i class="fa-solid fa-arrow-right" style="color: #000000;"></i></button>

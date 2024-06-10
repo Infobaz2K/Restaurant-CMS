@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-
 //pievienot kategoriju
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -27,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 //
-
 
 // category edit popup
 
@@ -49,7 +47,6 @@ function closeEditCatPopup(cat_id) {
 }
 
 //
-
 
 //text image upload
 
@@ -107,4 +104,56 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 //
+
+function validateFormCategoryEdit(formId) {
+
+    var catName = document.getElementById("edit_cat_name-" + formId).value.trim();
+    var catPos = document.getElementById("edit_cat_pos-" + formId).value.trim();
+
+    var catNameError = document.getElementById("edit_cat_name-error-" + formId);
+    var catPosError = document.getElementById("edit_cat_pos-error-" + formId);
+
+    catNameError.textContent = "";
+    catPosError.textContent = "";
+
+    if (catName === "") {
+        catNameError.textContent = "Lūdzu ievadiet kategorijas nosaukumu";
+    }
+
+    if (catPos === "") {
+        catPosError.textContent = "Lūdzu ievadiet kategorijas pozīciju";
+    }
+
+    if (catName === "" || catPos === "") {
+        return false;
+    }
+
+    return true;
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    
+    var forms = document.querySelectorAll('form[id^="categoryForm"]');
+
+    forms.forEach(function(form) {
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            var formId = form.id.split("-")[1];
+            validateFormCategoryEdit(formId);
+        });
+
+        var catNameInput = form.querySelector('input[name="edit_cat_name"]');
+        var catPosInput = form.querySelector('input[name="edit_cat_pos"]');
+
+        catNameInput.addEventListener("input", function() {
+            var formId = form.id.split("-")[1];
+            validateFormCategoryEdit(formId);
+        });
+
+        catPosInput.addEventListener("input", function() {
+            var formId = form.id.split("-")[1];
+            validateFormCategoryEdit(formId);
+        });
+    });
+});
 

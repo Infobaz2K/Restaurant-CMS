@@ -108,15 +108,18 @@ if (!isset($_SESSION['user_id'])) {
                                     </div>
 
                                     <div class="category-edit-popup-content-info">
-                                        <form id="categoryForm-<?php echo $cat['id']; ?>" method="POST">
+                                        
+                                        <form id="categoryForm-<?php echo $cat['id']; ?>" method="POST" onsubmit="return validateFormCategoryEdit(<?php echo $cat['id']; ?>)">
                                             <div>
                                                 <p>Kategorijas nosaukums</p>
                                                 <input type="text" id="edit_cat_name-<?php echo $cat['id']; ?>" name="edit_cat_name" value="<?php echo htmlspecialchars($cat['category_name']); ?>">
+                                                <p id="edit_cat_name-error-<?php echo $cat['id']; ?>" class="error-message"></p>
                                             </div>
 
                                             <div>
                                                 <p>Kategorijas pozīcija</p>
                                                 <input type="text" id="edit_cat_pos-<?php echo $cat['id']; ?>" name="edit_cat_pos" value="<?php echo htmlspecialchars($cat['category_position']); ?>">
+                                                <p id="edit_cat_pos-error-<?php echo $cat['id']; ?>" class="error-message"></p>
                                             </div>
 
                                             <div class="category-edit-popup-content-info-public">
@@ -128,7 +131,7 @@ if (!isset($_SESSION['user_id'])) {
                                             </div>
                                             <input type="hidden" name="action" value="editCategory">
                                             <input type="hidden" name="Id" value="<?php echo $cat['id']; ?>">
-                                        </form> 
+                                        </form>
 
                                         <form id="autoCategoryImage-<?php echo $cat['id']; ?>" method="POST" enctype="multipart/form-data">
                                             <div class="category-edit-popup-content-info-pub-img">
@@ -144,7 +147,6 @@ if (!isset($_SESSION['user_id'])) {
                                             <input type="hidden" name="action" value="editCategoryImage">
                                             <input type="hidden" name="Id" value="<?php echo $cat['id']; ?>">
                                         </form>
-
 
                                     </div>
 

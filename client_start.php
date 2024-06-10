@@ -15,6 +15,7 @@ include 'api/get_request.php';
     <link rel="stylesheet" href="style/client_start.css">
     <title>Client Start</title>
 </head>
+
 <body>
 
     <div class="main">

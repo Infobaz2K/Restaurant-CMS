@@ -40,12 +40,12 @@ usort($foods, function($a, $b) {
     <div class="main">
         <div class="main-inner">
 
-        <div class="main-inner-back">
-            <?php
-                $back = $BackToCat[0];
-                echo '<a href="client_cat.php?menu_id=' . $back['menu_id'] . '"><i class="fa-solid fa-arrow-left" style="color: #0d0d0d;"></i></a>';
-            ?>
-        </div>
+            <div class="main-inner-back">
+                <?php
+                    $back = $BackToCat[0];
+                    echo '<a href="client_cat.php?menu_id=' . $back['menu_id'] . '"><i class="fa-solid fa-arrow-left" style="color: #0d0d0d;"></i></a>';
+                ?>
+            </div>
 
             <div class="main-inner-cat">
                 <?php $PublicFood = false; ?>

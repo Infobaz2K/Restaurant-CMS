@@ -101,14 +101,6 @@ switch ($requestPath) {
     case '/cms/client_start.php':
     
         if (isset($_GET['user_id'])) {
-            $user_id = $_GET['user_id'];
-    
-            $response = $apiRequest->getRequest('getPost', ['user_id' => $user_id]);
-            $posts = json_decode($response, true);
-    
-        }
-    
-        if (isset($_GET['user_id'])) {
     
             $user_id = $_GET['user_id'];
             $response = $apiRequest->getRequest('getMenu', ['user_id' => $user_id]);

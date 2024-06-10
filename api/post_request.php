@@ -69,9 +69,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION['user_id'] = $userData["id"];
     
                     header("Location: user_page.php");
-                } else {
-    
-                    echo "Pieslēgšanās neveiksmīga, mēģiniet vēlreiz.";
                 }
 
                 break;
@@ -86,8 +83,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
                 $response = $apiRequest->postRequest($postData);
                 $responseData = json_decode($response, true);
-
-                header("Location: login.php");
 
                 break;
                 

@@ -13,14 +13,17 @@ include "api/post_request.php";
     <title>User Registration</title>
 
 </head>
+
 <body>
     <div class="main">
         <div class="register">
             <h1>Lietotāja reģistrācija</h1>
-            <form method="post">
+            <form method="post" onsubmit="return validateFormRegister()">
                 <div>
-                    <input type="text" name="username" placeholder="Lietotājvārds"><br>
-                    <input type="password" name="password" placeholder="Parole"><br>
+                    <input type="text" id="username" name="username" placeholder="Lietotājvārds">
+                    <span id="username-error" class="error-message"></span>
+                    <input type="password" id="password" name="password" placeholder="Parole">
+                    <span id="password-error" class="error-message"></span>
                 </div>
                 <div>
                     <input type="hidden" name="action" value="registerUser">
@@ -31,4 +34,7 @@ include "api/post_request.php";
         </div>
     </div>
 </body>
+
+<script src="scripts/register.js"></script>
+
 </html>

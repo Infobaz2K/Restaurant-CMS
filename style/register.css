@@ -85,3 +85,17 @@ html, body {
 .register a:hover {
     text-decoration: underline;
 }
+
+.error-message {
+    color: red;
+    font-size: 14px;
+}
+
+.register input,
+.register button {
+    margin-bottom: 10px;
+}
+
+.register input:last-child {
+    margin-bottom: 20px;
+}

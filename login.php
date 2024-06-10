@@ -16,10 +16,12 @@ include "api/post_request.php";
     <div class="main">
         <div class="login">
             <h1>Pieslēgties</h1>
-            <form method="post">
+            <form method="post" onsubmit="return validateFormLogin()">
                 <div>
-                    <input type="text" id="username" name="username" placeholder="Lietotājvārds"><br>
-                    <input type="password" id="password" name="password" placeholder="Parole"><br>
+                    <input type="text" id="username" name="username" placeholder="Lietotājvārds">
+                    <span id="username-error" class="error-message"></span>
+                    <input type="password" id="password" name="password" placeholder="Parole">
+                    <span id="password-error" class="error-message"></span>
                 </div>
                 <div>
                     <input type="hidden" name="action" value="loginUser">
@@ -31,5 +33,8 @@ include "api/post_request.php";
 
     </div>
 </body>
+
+<script src="scripts/login.js"></script>
+
 </html>
 

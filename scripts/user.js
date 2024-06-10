@@ -46,6 +46,7 @@ document.getElementById('post_image').addEventListener('change', function() {
 //
 
 function validateFormInfoInsert() {
+    
     var businessname = document.getElementById("businessname").value;
     var regnum = document.getElementById("regnum").value;
     var address = document.getElementById("address").value;
@@ -111,6 +112,7 @@ function validateFormInfoInsert() {
 }
 
 function validateFormInfoEdit() {
+
     var businessname = document.getElementById("businessname").value;
     var regnum = document.getElementById("regnum").value;
     var address = document.getElementById("address").value;

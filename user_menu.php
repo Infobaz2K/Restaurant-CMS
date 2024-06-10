@@ -82,7 +82,7 @@ if (!isset($_SESSION['user_id'])) {
                                 </div>
 
                                 <div id="menu-edit-popup-<?php echo $menu['id']; ?>" class="menu-edit-popup">
-                                    <form method="POST">
+                                    <form method="POST" onsubmit="return validateFormMenuEdit()">
                                         <div class="menu-edit-popup-content">
                                             <div class="menu-edit-popup-content-head">
                                                 <h1>Izmaini ēdienkarti</h1>
@@ -93,6 +93,7 @@ if (!isset($_SESSION['user_id'])) {
                                                 <div>
                                                     <p>Nomaini ēdienkartes nosaukumu</p>
                                                     <input type="text" id="edit_menu_name" name="edit_menu_name" value="<?php echo htmlspecialchars($menu['menu_name']); ?>">
+                                                    <p id="edit_menu_name-error" class="error-message"></p>
                                                 </div>
 
                                                 <div>
@@ -119,7 +120,7 @@ if (!isset($_SESSION['user_id'])) {
 
                 <p type="button" class="add-menu" id="showMenuInfo">Pievienot ēdienkarti <i class="fa-solid fa-circle-plus fa-lg" style="color: #000000;"></i></p>
                 
-                <form method="POST">
+                <form method="POST" onsubmit="return validateFormMenuInsert()">
 
                     <div class="menu-info-insert hidden">
                         <h2>Pievienot jaunu ēdienkarti</h2>
@@ -127,6 +128,7 @@ if (!isset($_SESSION['user_id'])) {
                         <div>
                             <p>Ēdienkartes nosaukums</p>
                             <input type="text" id ="menu_name" name="menu_name" value="">
+                            <p id="menu_name-error" class="error-message"></p>
                         </div>
                         
                         <div>

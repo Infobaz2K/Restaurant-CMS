@@ -253,7 +253,10 @@ class dbconnect
         $sqlInsertCategory = "INSERT INTO categories (category_name, category_public, category_position, cat_image)
                               VALUES (?, ?, ?, ?)";
         $stmtInsertCategory = $this->mysqli->prepare($sqlInsertCategory);
-        $stmtInsertCategory->bind_param("siis", $data['category_name'], $data['category_public'], $data['category_position'], $data['cat_image']);
+        $stmtInsertCategory->bind_param("siis", $data['category_name'],
+                                                $data['category_public'], 
+                                                $data['category_position'], 
+                                                $data['cat_image']);
         $stmtInsertCategory->execute();
         $categoryId = $stmtInsertCategory->insert_id;
         $stmtInsertCategory->close();

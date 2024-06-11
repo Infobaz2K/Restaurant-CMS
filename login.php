@@ -18,10 +18,13 @@ include "api/post_request.php";
             <h1>Pieslēgties</h1>
             <form method="post" onsubmit="return validateFormLogin()">
                 <div>
+                    <?php if(isset($_POST['action']) && $_POST['action'] === 'loginUser' && isset($errorMessage)): ?>
+                        <p class="error-message"><?php echo $errorMessage; ?></p>
+                    <?php endif; ?>
                     <input type="text" id="username" name="username" placeholder="Lietotājvārds">
-                    <span id="username-error" class="error-message"></span>
+                    <p id="username-error" class="error-message"></p>
                     <input type="password" id="password" name="password" placeholder="Parole">
-                    <span id="password-error" class="error-message"></span>
+                    <p id="password-error" class="error-message"></p>
                 </div>
                 <div>
                     <input type="hidden" name="action" value="loginUser">
@@ -30,11 +33,8 @@ include "api/post_request.php";
             </form>
             <p>Nav izveidots konts? <a href="register.php">Reģistrējies šeit</a></p>
         </div>
-
     </div>
 </body>
-
 <script src="scripts/login.js"></script>
-
 </html>
 

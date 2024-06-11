@@ -60,15 +60,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     'username'  => htmlspecialchars($_POST['username']),
                     'password'  => htmlspecialchars($_POST['password']),
                 ];
-    
+            
                 $response = $apiRequest->postRequest($postData);
                 $responseData = json_decode($response, true);
-    
+            
                 if ($responseData !== false && isset($responseData['success']) && $responseData['success']) {
+
                     $userData = $responseData['data'];
                     $_SESSION['user_id'] = $userData["id"];
-    
                     header("Location: user_page.php");
+
+                } else {
+                    $errorMessage = "Nepareizs lietotājvārds vai parole";
                 }
 
                 break;

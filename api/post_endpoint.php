@@ -21,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if (!isset($postData['username']) || empty($postData['username']) || !isset($postData['password']) || empty($postData['password'])) {
                     
                 } else {
+                    
                     $data = [
                         'username' => htmlspecialchars($postData['username']),
                         'password' => htmlspecialchars($postData['password']),

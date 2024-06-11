@@ -8,10 +8,6 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
-
-echo "Session User ID: " . $_SESSION['user_id']; // Debugging output
-
-
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +27,6 @@ echo "Session User ID: " . $_SESSION['user_id']; // Debugging output
 </head>
 <body>
 
-    <a class="button" href="logout.php">Izlogoties</a>
     <div id="headerContainer"></div>
 
     <div class="main">

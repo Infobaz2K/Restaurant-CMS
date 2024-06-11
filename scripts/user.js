@@ -166,6 +166,9 @@ function validateFormInfoEdit() {
         isValid = false;
     }
 
+    var saveButton = document.getElementById("saveButton");
+    saveButton.disabled = !isValid;
+
     return isValid;
 }
 

@@ -161,6 +161,10 @@ html, body {
         border: 2px solid black;
     }
 
+    .post-info button:disabled {
+        color: black;
+    }
+
     .post-info input {
         width: 485px;
         height: 55px;

@@ -87,6 +87,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $response = $apiRequest->postRequest($postData);
                 $responseData = json_decode($response, true);
 
+                header("Location: login.php");
+
                 break;
                 
             case 'postInfo':

@@ -92,7 +92,7 @@ if (!isset($_SESSION['user_id'])) {
                             
                             <div>
                                 <button id="saveButton" type="submit">Saglabāt</button>
-                                <a class="button" href="client_start.php?user_id=<?php echo $post['user_id']; ?>">klienta skats</a>
+                                <a class="button" href="client_start.php?user_id=<?php echo $post['user_id']; ?>">Apskatīt klienta ēdienkarti</a>
                             </div>
 
                         </div>

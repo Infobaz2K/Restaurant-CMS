@@ -50,7 +50,7 @@ if (!isset($_SESSION['user_id'])) {
                                         <p>Uzņēmuma nosaukums:</p>
                                         <input type="text" id="businessname" name="businessname" value="<?php echo htmlspecialchars($post['businessname'] ?? ''); ?>">
                                         <p id="businessname-error" class="error-message"></p>
-                                        <p>Reģistrācijas numurs:</p>
+                                        <p>Reģistrācijas nummurs:</p>
                                         <input type="text" id="regnum" name="regnum" value="<?php echo htmlspecialchars($post['regnum'] ?? ''); ?>">
                                         <p id="regnum-error" class="error-message"></p>
                                         <p>Juridiskā adrese:</p>
@@ -107,7 +107,7 @@ if (!isset($_SESSION['user_id'])) {
                                     <p>Uzņēmuma nosaukums:</p>
                                     <input type="text" id="businessname" name="businessname" value="">
                                     <p id="businessname-error" class="error-message"></p>
-                                    <p>Reģistrācijas numurs:</p>
+                                    <p>Reģistrācijas nummurs:</p>
                                     <input type="text" id="regnum" name="regnum" value="">
                                     <p id="regnum-error" class="error-message"></p>
                                     <p>Juridiskā adrese:</p>

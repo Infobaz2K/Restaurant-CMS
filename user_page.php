@@ -64,7 +64,7 @@ if (!isset($_SESSION['user_id'])) {
                                         <p>SWIFT:</p>
                                         <input type="text" id="swift" name="swift" value="<?php echo htmlspecialchars($post['swift'] ?? ''); ?>">
                                         <p id="swift-error" class="error-message"></p>
-                                        <p>Konta numurs:</p>
+                                        <p>Konta nummurs:</p>
                                         <input type="text" id="bankaccnum" name="bankaccnum" value="<?php echo htmlspecialchars($post['bankaccnum'] ?? ''); ?>">
                                         <p id="bankaccnum-error" class="error-message"></p>
                                     </div>
@@ -121,7 +121,7 @@ if (!isset($_SESSION['user_id'])) {
                                     <p>SWIFT:</p>
                                     <input type="text" id="swift" name="swift" value="">
                                     <p id="swift-error" class="error-message"></p>
-                                    <p>Konta numurs:</p>
+                                    <p>Konta nummurs:</p>
                                     <input type="text" id="bankaccnum" name="bankaccnum" value="">
                                     <p id="bankaccnum-error" class="error-message"></p>
                                 </div>

@@ -154,6 +154,7 @@ html, body {
         font-family: inherit;
         border: none;
         margin-top: 15px;
+        margin-right: 10px;
     }
 
     .post-info button:hover {

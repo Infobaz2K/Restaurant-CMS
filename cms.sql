@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2024 at 06:15 PM
+-- Generation Time: Jun 13, 2024 at 07:19 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -31,8 +31,8 @@ CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
   `category_name` varchar(255) NOT NULL,
   `category_public` tinyint(1) NOT NULL,
-  `category_position` int(45) DEFAULT NULL,
-  `cat_image` varchar(255) DEFAULT NULL
+  `category_position` int(45) NOT NULL,
+  `cat_image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -40,11 +40,8 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `category_name`, `category_public`, `category_position`, `cat_image`) VALUES
-(163, 'BURGERI', 1, 1, 'uploads/burger.jpg'),
-(164, 'PICAS', 1, 2, 'uploads/pizza.jpg'),
-(169, 'SALATI', 1, 3, 'uploads/salad.jpg'),
-(176, 'ZUPAS', 1, 4, 'uploads/pumkin soup.jpeg'),
-(184, 'MAKARONI', 1, 5, 'uploads/macaron.jpg');
+(1, 'BURGERI', 1, 1, 'uploads/burger.jpg'),
+(2, 'PICAS', 1, 2, 'uploads/pizza.jpg');
 
 -- --------------------------------------------------------
 
@@ -62,8 +59,9 @@ CREATE TABLE `category_foods` (
 --
 
 INSERT INTO `category_foods` (`food_id`, `category_id`) VALUES
-(158, 163),
-(177, 163);
+(1, 1),
+(2, 1),
+(3, 2);
 
 -- --------------------------------------------------------
 
@@ -77,9 +75,9 @@ CREATE TABLE `foods` (
   `food_public` tinyint(1) NOT NULL,
   `description` varchar(255) NOT NULL,
   `cooktime` varchar(45) NOT NULL,
-  `food_position` int(45) DEFAULT NULL,
+  `food_position` int(45) NOT NULL,
   `price` decimal(10,2) NOT NULL,
-  `food_image` varchar(255) DEFAULT NULL
+  `food_image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -87,8 +85,9 @@ CREATE TABLE `foods` (
 --
 
 INSERT INTO `foods` (`id`, `food_name`, `food_public`, `description`, `cooktime`, `food_position`, `price`, `food_image`) VALUES
-(158, 'SIERA BURGERS', 1, 'Pasta staple, vistas fileja, burkāni, baltās pupiņas, paprika, kaltēti tomāti, zilais siers, saldais krējums, sīpoli', '15 MIN', 1, 12.49, 'uploads/burger.jpg'),
-(177, 'DUBULTAIS SIERA BURGERS', 1, 'Pasta staple, vistas fileja, burkāni, baltās pupiņas, paprika, kaltēti tomāti, zilais siers, saldais krējums, sīpoli', '10 MIN', 2, 14.99, 'uploads/burgerfood4.png');
+(1, 'DUBULTAIS SIERA BURGERS', 1, 'Pasta staple, vistas fileja, burkāni, baltās pupiņas, paprika, kaltēti tomāti, zilais siers, saldais krējums, sīpoli', '15 MIN', 1, 12.43, 'uploads/burger1.jpg'),
+(2, 'SIERA BURGERS', 1, 'Pasta staple, vistas fileja, burkāni, baltās pupiņas, paprika, kaltēti tomāti, zilais siers, saldais krējums, sīpoli', '10 MIN', 2, 12.99, 'uploads/burger2.jpg'),
+(3, 'SIERA PICA', 1, 'Pasta staple, vistas fileja, burkāni, baltās pupiņas, paprika, kaltēti tomāti, zilais siers, saldais krējums, sīpoli', '30 MIN', 1, 10.00, 'uploads/pizza2.jpg');
 
 -- --------------------------------------------------------
 
@@ -108,8 +107,8 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id`, `menu_name`, `public`, `user_id`) VALUES
-(108, 'BRIVDIENU PIEDAVAJUMS', 1, 13),
-(124, 'DARBADIENU PIEDAVAJUMS', 0, 13);
+(1, 'BRIVDIENU PIEDAVAJUMS', 1, 1),
+(2, 'DARBADIENU PIEDAVAJUMS', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -127,11 +126,8 @@ CREATE TABLE `menu_categories` (
 --
 
 INSERT INTO `menu_categories` (`menu_id`, `category_id`) VALUES
-(108, 163),
-(108, 164),
-(108, 169),
-(108, 176),
-(108, 184);
+(1, 1),
+(1, 2);
 
 -- --------------------------------------------------------
 
@@ -141,14 +137,14 @@ INSERT INTO `menu_categories` (`menu_id`, `category_id`) VALUES
 
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
-  `businessname` varchar(255) DEFAULT NULL,
-  `regnum` varchar(255) DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL,
-  `bank` varchar(255) DEFAULT NULL,
-  `swift` varchar(255) DEFAULT NULL,
-  `bankaccnum` varchar(255) DEFAULT NULL,
+  `businessname` varchar(255) NOT NULL,
+  `regnum` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `bank` varchar(255) NOT NULL,
+  `swift` varchar(255) NOT NULL,
+  `bankaccnum` varchar(255) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `post_image` varchar(255) DEFAULT NULL
+  `post_image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -156,7 +152,8 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `businessname`, `regnum`, `address`, `bank`, `swift`, `bankaccnum`, `user_id`, `post_image`) VALUES
-(23, 'SIA PICA', 'LV123456789', 'Rigas iela 55', 'SWED BANK', 'LV HABA 12345', 'LV11HABA4332423432', 13, 'uploads/logo.png');
+(1, 'SIA PICA', 'LV123456789', 'Rigas iela 55', 'SWED BANK', 'LV HABA 12345', 'LV11HABA4332423432', 1, 'uploads/logo.png'),
+(2, 'SIA BURGER', 'LV123456789', 'Valmiermuizas iela', 'citadele', 'LV HABA 12345', 'LV11HABA634633', 2, 'uploads/logo2.png');
 
 -- --------------------------------------------------------
 
@@ -175,7 +172,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`) VALUES
-(13, 'user', '$2y$10$uSpBz6nhRCMgz7cLEQbAvOYMEUeuraLOlHJ6cnN.8R54EFRwd0bh6');
+(1, 'user', '$2y$10$4UvGDb.NiheHMg0KvG7GveKI180ztVghahS7H1v9g/UEnsXcklznW'),
+(2, 'user2', '$2y$10$zQkmwUSxpKdc9tEnx1YHWe3xD6fAD4ZMmjx6cDv7x4fC/fo/7m67m');
 
 --
 -- Indexes for dumped tables
@@ -185,7 +183,8 @@ INSERT INTO `users` (`id`, `username`, `password`) VALUES
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id_UNIQUE` (`id`);
 
 --
 -- Indexes for table `category_foods`
@@ -199,13 +198,15 @@ ALTER TABLE `category_foods`
 -- Indexes for table `foods`
 --
 ALTER TABLE `foods`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id_UNIQUE` (`id`);
 
 --
 -- Indexes for table `menu`
 --
 ALTER TABLE `menu`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id_UNIQUE` (`id`),
   ADD KEY `fk_menu_users1_idx` (`user_id`);
 
 --
@@ -221,13 +222,15 @@ ALTER TABLE `menu_categories`
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id_UNIQUE` (`id`),
   ADD KEY `fk_posts_users` (`user_id`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id_UNIQUE` (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -237,31 +240,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=189;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `foods`
 --
 ALTER TABLE `foods`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

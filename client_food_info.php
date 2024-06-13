@@ -25,11 +25,11 @@ include 'api/get_request.php';
     <div class="header">
         <div class="header-inner">
             <div class="header-inner-logo">
-                <p>LOGO</p>
+                <i class="fa-solid fa-utensils" style="color: #000000;"></i>
             </div>
             <div class="header-inner-text">
                 <a class="active" href="">Ēdienkarte</a>
-                <i class="fa-sharp fa-regular fa-bag-shopping" style="color: #000000;"></i>
+                <a href="">Par mums</a>
             </div>
         </div>
     </div>

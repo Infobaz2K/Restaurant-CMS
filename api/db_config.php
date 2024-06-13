@@ -140,7 +140,7 @@ class dbconnect
 
 
 
-    public function getPost($user_id) {
+    public function getInfo($user_id) {
 
         $sql = "SELECT * FROM posts 
                 JOIN users on posts.user_id = users.id

@@ -48,7 +48,7 @@ switch ($requestPath) {
         if (isset($_SESSION['user_id'])) {
             $user_id = $_SESSION['user_id'];
     
-            $response = $apiRequest->getRequest('getPost', ['user_id' => $user_id]);
+            $response = $apiRequest->getRequest('getInfo', ['user_id' => $user_id]);
             $posts = json_decode($response, true);
     
         }

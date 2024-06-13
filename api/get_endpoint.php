@@ -13,10 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
         switch ($action) {
             
-            case 'getPost':
+            case 'getInfo':
 
                 $user_id = $_GET['user_id'];
-                $result = $db->getPost($user_id);  
+                $result = $db->getInfo($user_id);  
                 $jsonResponse = json_encode($result);
             
                 break;

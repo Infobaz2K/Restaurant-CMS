@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2024 at 04:34 PM
+-- Generation Time: Jun 13, 2024 at 06:15 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
-  `category_name` varchar(45) NOT NULL,
-  `category_public` tinyint(4) NOT NULL,
-  `category_position` varchar(45) DEFAULT NULL,
+  `category_name` varchar(255) NOT NULL,
+  `category_public` tinyint(1) NOT NULL,
+  `category_position` int(45) DEFAULT NULL,
   `cat_image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -40,10 +40,11 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `category_name`, `category_public`, `category_position`, `cat_image`) VALUES
-(163, 'BURGERI', 1, '1', 'uploads/burger.jpg'),
-(164, 'PICAS', 1, '2', 'uploads/pizza.jpg'),
-(169, 'SALATI', 1, '5', 'uploads/salad.jpg'),
-(176, 'ZUPAS', 1, '3', 'uploads/pumkin soup.jpeg');
+(163, 'BURGERI', 1, 1, 'uploads/burger.jpg'),
+(164, 'PICAS', 1, 2, 'uploads/pizza.jpg'),
+(169, 'SALATI', 1, 3, 'uploads/salad.jpg'),
+(176, 'ZUPAS', 1, 4, 'uploads/pumkin soup.jpeg'),
+(184, 'MAKARONI', 1, 5, 'uploads/macaron.jpg');
 
 -- --------------------------------------------------------
 
@@ -62,7 +63,7 @@ CREATE TABLE `category_foods` (
 
 INSERT INTO `category_foods` (`food_id`, `category_id`) VALUES
 (158, 163),
-(160, 163);
+(177, 163);
 
 -- --------------------------------------------------------
 
@@ -72,14 +73,12 @@ INSERT INTO `category_foods` (`food_id`, `category_id`) VALUES
 
 CREATE TABLE `foods` (
   `id` int(11) NOT NULL,
-  `food_name` varchar(45) NOT NULL,
-  `food_public` tinyint(4) NOT NULL,
+  `food_name` varchar(255) NOT NULL,
+  `food_public` tinyint(1) NOT NULL,
   `description` varchar(255) NOT NULL,
   `cooktime` varchar(45) NOT NULL,
-  `food_position` varchar(45) DEFAULT NULL,
+  `food_position` int(45) DEFAULT NULL,
   `price` decimal(10,2) NOT NULL,
-  `activestart` time(6) NOT NULL,
-  `activeend` time(6) DEFAULT NULL,
   `food_image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -87,9 +86,9 @@ CREATE TABLE `foods` (
 -- Dumping data for table `foods`
 --
 
-INSERT INTO `foods` (`id`, `food_name`, `food_public`, `description`, `cooktime`, `food_position`, `price`, `activestart`, `activeend`, `food_image`) VALUES
-(158, 'SIERA BURGERS', 1, 'Pasta staple, vistas fileja, burkāni, baltās pupiņas, paprika, kaltēti tomāti, zilais siers, saldais krējums, sīpoli', '15 MIN', '1', 12.00, '10:45:00.000000', '05:50:00.000000', 'uploads/burger.jpg'),
-(160, 'SIERA PICA', 1, 'SIERS, MAIZE, MERCESIERS, MAIZE, MERCESIERS, MAIZE, MERCESIERS, MAIZE, MERCESIERS, MAIZE, MERCE', '10 MIN', '2', 6.99, '23:38:00.000000', '23:41:00.000000', 'uploads/pizza.jpg');
+INSERT INTO `foods` (`id`, `food_name`, `food_public`, `description`, `cooktime`, `food_position`, `price`, `food_image`) VALUES
+(158, 'SIERA BURGERS', 1, 'Pasta staple, vistas fileja, burkāni, baltās pupiņas, paprika, kaltēti tomāti, zilais siers, saldais krējums, sīpoli', '15 MIN', 1, 12.49, 'uploads/burger.jpg'),
+(177, 'DUBULTAIS SIERA BURGERS', 1, 'Pasta staple, vistas fileja, burkāni, baltās pupiņas, paprika, kaltēti tomāti, zilais siers, saldais krējums, sīpoli', '10 MIN', 2, 14.99, 'uploads/burgerfood4.png');
 
 -- --------------------------------------------------------
 
@@ -99,8 +98,8 @@ INSERT INTO `foods` (`id`, `food_name`, `food_public`, `description`, `cooktime`
 
 CREATE TABLE `menu` (
   `id` int(11) NOT NULL,
-  `menu_name` varchar(45) NOT NULL,
-  `public` tinyint(4) NOT NULL,
+  `menu_name` varchar(255) NOT NULL,
+  `public` tinyint(1) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -109,7 +108,8 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id`, `menu_name`, `public`, `user_id`) VALUES
-(108, 'BRIVDIENU PIEDAVAJUMS', 1, 13);
+(108, 'BRIVDIENU PIEDAVAJUMS', 1, 13),
+(124, 'DARBADIENU PIEDAVAJUMS', 0, 13);
 
 -- --------------------------------------------------------
 
@@ -130,7 +130,8 @@ INSERT INTO `menu_categories` (`menu_id`, `category_id`) VALUES
 (108, 163),
 (108, 164),
 (108, 169),
-(108, 176);
+(108, 176),
+(108, 184);
 
 -- --------------------------------------------------------
 
@@ -174,8 +175,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`) VALUES
-(13, 'user', '$2y$10$i0xbjErM.AJMdRZdMGXFQu3tndb8/I4D6j2d6XNcRT0FrRlQFAzl.'),
-(18, 'john', '$2y$10$7ZfkzG4YeK3qgMctQQ6VWOM8ZlCC7XExCMN7v4RQvRbxgmLjnt9Vq');
+(13, 'user', '$2y$10$uSpBz6nhRCMgz7cLEQbAvOYMEUeuraLOlHJ6cnN.8R54EFRwd0bh6');
 
 --
 -- Indexes for dumped tables
@@ -237,31 +237,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=184;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=189;
 
 --
 -- AUTO_INCREMENT for table `foods`
 --
 ALTER TABLE `foods`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
 
 --
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Constraints for dumped tables

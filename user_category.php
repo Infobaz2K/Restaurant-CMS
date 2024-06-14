@@ -49,7 +49,7 @@ if (!isset($_SESSION['user_id'])) {
 
                     <div class="food-info">
                         <div class="food-info-public">Publicēts</div>
-                        <div class="food-info-name">Ēdienkartes nosaukums</div>
+                        <div class="food-info-name">Kategorijas nosaukums</div>
                         <div class="food-info-position">Pozīcija</div>
                     </div>
 

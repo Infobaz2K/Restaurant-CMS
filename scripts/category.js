@@ -132,7 +132,7 @@ function validateFormCategoryInsert() {
     }
 
     if (image === "") {
-        imageError.innerHTML = "Lūdzu izvēlieties uzņēmuma logotipu";
+        imageError.innerHTML = "Lūdzu izvēlieties attēlu";
         isValid = false;
     }
 
